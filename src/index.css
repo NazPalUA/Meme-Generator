@@ -102,3 +102,15 @@ body {
 .top {
   top: 0;
 }
+
+.download--button {
+  font-family: "Karla", sans-serif;
+  border-radius: 5px;
+  background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+}
