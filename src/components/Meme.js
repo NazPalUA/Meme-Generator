@@ -1,4 +1,5 @@
 import React from "react"
+import downloadHTML from "../tools/downloadHTML"
 
 export default function Meme() {
 
@@ -61,13 +62,14 @@ export default function Meme() {
                     Get a new meme image 🖼
                 </button>
             </div>
-            <div className="meme">
+            <div className="meme" id="meme">
                 <img src={meme.randomImage} className="meme--image" alt="meme"/>
                 <h2 className="meme--text top">{meme.topText}</h2>
                 <h2 className="meme--text bottom">{meme.bottomText}</h2>
             </div>
             <button 
                     className="download--button"
+                    onClick={()=>downloadHTML("meme")}
                 >
                     Download
                 </button>
