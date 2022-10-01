@@ -1,5 +1,6 @@
 import React from "react"
 import downloadHTML from "../tools/downloadHTML"
+import './meme.css'
 
 export default function Meme() {
 
