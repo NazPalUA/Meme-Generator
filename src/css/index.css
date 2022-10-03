@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Karla", sans-serif;
+  margin: 0;
+}
+
+.main {
+  padding: 36px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+:root {
+  --main-gradient: linear-gradient(90deg, #141824 1.18%, #46516e 100%);
+
+  --ff-primary: 'Inter', sans-serif;
+  
+  --fw-reg: 400;
+  --fw-medium: 600;
+  --fw-bold: 700;
+  
+  --clr-light: #fff;
+  --clr-semi-light: #DEEBF8;
+  --clr-dark: #21222A;
+  --clr-semi-dark: #282D35;
+  --clr-accent: #61DAFB;
+  
+  --fs-h1: 2.44rem;
+  --fs-h2: 1.39rem;
+  --fs-h3: 1rem;
+  --fs-body: 1rem;
+}

@@ -1,12 +1,12 @@
 import React from "react"
-import Meme from "../components/Meme"
+import MemeContainer from "../components/MemeContainer"
 import Settings from "../components/Settings"
-import "./home.css"
+import "../css/home.css"
 
 export default function Home() {
     return (
         <div className="home-page">
-            <Meme />
+            <MemeContainer />
             <Settings />
         </div>
     )

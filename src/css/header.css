@@ -8,11 +8,11 @@ a {
     align-items: center;
     justify-content: space-between;
     height: 65px;
-    background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
+    background: var(--main-gradient);
     color: white;
     padding: 20px;
   }
-
+  
   .header__image-link {
     display: flex;
     align-items: center;

@@ -1,6 +1,6 @@
 import React from "react"
-import trollFace from "../images/troll-face.png"
-import './header.css'
+import trollFace from "../images/header-logo.png"
+import '../css/header.css'
 import {Link} from "react-router-dom"
 
 export default function Header() {

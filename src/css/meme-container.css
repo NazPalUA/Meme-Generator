@@ -1,0 +1,76 @@
+
+.meme-container {
+  align-self: flex-start;
+
+  display: grid;
+  grid-template: auto auto auto / 1fr 1fr;
+  grid-template-areas: 
+    "button1 button2"
+    "meme meme"
+    "button3 button4";
+  gap: 17px;
+
+  box-sizing: content-box;
+  width: 600px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.meme {
+  grid-area: meme;
+  position: relative;
+}
+
+.meme__button_1 { grid-area: button1; }
+
+.meme__button_2 { grid-area: button2; }
+
+.meme__button_3 { grid-area: button3; }
+
+.meme__button_4 { grid-area: button4; }
+
+.meme__button {
+  font-family: "Karla", sans-serif;
+  border-radius: 5px;
+  background: var(--main-gradient);
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 10px;
+}
+  
+.meme__image {
+  width: 100%;
+  border-radius: 3px;
+}
+
+.meme__text {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  font-family: impact, sans-serif;
+  font-size: 2em;
+  text-transform: uppercase;
+  color: white;
+
+  letter-spacing: 1px;
+  text-shadow:
+      2px 2px 0 #000,
+      -2px -2px 0 #000,
+      2px -2px 0 #000,
+      -2px 2px 0 #000,
+      0 2px 0 #000,
+      2px 0 0 #000,
+      0 -2px 0 #000,
+      -2px 0 0 #000,
+      2px 2px 5px #000;
+
+  background: none;
+  border: none;
+}
+
+.meme__text.active {
+  border: 4px solid red;
+}
