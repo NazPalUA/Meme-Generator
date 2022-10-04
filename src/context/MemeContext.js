@@ -41,6 +41,7 @@ function MemeContextProvider({children}) {
             }
             return <input 
                 key={line.lineId}
+                id={line.lineId}
                 type="text"
                 placeholder="Type here"
                 className={line.active ? "meme__text active" : "meme__text"}
@@ -53,8 +54,17 @@ function MemeContextProvider({children}) {
         })
     }
 
-    function handleInputChange() {
-        return (true)
+    function handleInputChange(event) {
+        const {id, value} = event.target
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            linesArr: prevMeme.linesArr.map(line => {
+                if(line.lineId !== id) return line
+                else return {...line, 
+                    text: value
+                }
+            })
+        }))
     }
     
     function addLine() {
