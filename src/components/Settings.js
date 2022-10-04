@@ -50,33 +50,35 @@ export default function Settings() {
                 <h4 className="settings__section-title">
                     Position Settings
                 </h4>
-                <button className="settings__btn settings__position-btn">
-                    Center Text
-                </button>
-                <button 
-                    className="settings__btn"
-                    onClick={() => moveLine("left")}
-                >
-                    ←
-                </button>
-                <button 
-                    className="settings__btn"
-                    onClick={() => moveLine("right")}
-                >
-                    →
-                </button>
-                <button 
-                    className="settings__btn"
-                    onClick={() => moveLine("top")}
-                >
-                    ↑
-                </button>
-                <button 
-                    className="settings__btn"
-                    onClick={() => moveLine("bottom")}
-                >
-                    ↓
-                </button>
+                <div className="settings__position-btn-container">
+                    <button className="settings__btn settings__btn_center">
+                        Center Text
+                    </button>
+                    <button 
+                        className="settings__btn settings__btn_left"
+                        onClick={() => moveLine("left")}
+                    >
+                        ←
+                    </button>
+                    <button 
+                        className="settings__btn settings__btn_right"
+                        onClick={() => moveLine("right")}
+                    >
+                        →
+                    </button>
+                    <button 
+                        className="settings__btn settings__btn_top "
+                        onClick={() => moveLine("top")}
+                    >
+                        ↑
+                    </button>
+                    <button 
+                        className="settings__btn settings__btn_bottom"
+                        onClick={() => moveLine("bottom")}
+                    >
+                        ↓
+                    </button>
+                </div>
             </section>
         </div>
     )

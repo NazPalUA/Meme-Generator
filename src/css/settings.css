@@ -21,3 +21,22 @@
     padding: 10px;
     margin-top: 15px;
 }
+
+.settings__position-btn-container {
+    display: grid;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+    grid-template-areas: 
+    ". top ."
+    "left center right"
+    ". bottom .";
+}
+
+.settings__btn_center { grid-area: center; }
+
+.settings__btn_left { grid-area: left; }
+
+.settings__btn_right { grid-area: right; }
+
+.settings__btn_top { grid-area: top; }
+
+.settings__btn_bottom { grid-area: bottom; }
