@@ -4,38 +4,47 @@ a {
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 65px;
-    background: var(--main-gradient);
-    color: white;
-    padding: 20px;
-  }
-  
-  .header__image-link {
-    display: flex;
-    align-items: center;
-    height: 100%;
-  }
-  
-  .header__image {
-    margin-right: 6px;
-    height: 100%;
-  }
-  
-  .header__title {
-    font-size: 1.25rem;
-    margin: 0;
-    display: inline-block;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 65px;
+  background: var(--main-gradient);
+  color: white;
+  padding: 25px 20px 20px;
+}
 
-  .header__project-link {
+.header__image-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
 
-  }
-  
-  .header__project {
-    font-size: 0.75rem;
-    font-weight: 500;
-  }
-  
+.header__image {
+  margin-right: 6px;
+  height: 100%;
+  transform: scale(2) translateY(-2px);
+}
+
+.header__title {
+  font-size: 1.25rem;
+  margin: 0;
+  display: inline-block;
+  color: #51da5a;
+}
+
+.header__saved-link {
+  position: relative;
+}
+
+.header__saved-num {
+  position: absolute;
+  top: 1px;
+  left: 12px;
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header__saved-img {
+  height: 40px;
+}

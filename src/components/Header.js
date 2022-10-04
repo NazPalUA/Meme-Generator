@@ -1,5 +1,6 @@
 import React from "react"
 import trollFace from "../images/header-logo.png"
+import bookmark from "../images/bookmark.png"
 import '../css/header.css'
 import {Link} from "react-router-dom"
 
@@ -14,8 +15,13 @@ export default function Header() {
                 />      
                 <h2 className="header__title">Meme Generator</h2>
             </Link>
-            <Link to="/saved" className="header__project-link">
-                <h4 className="header__project">React Course - Project 3</h4>
+            <Link to="/saved" className="header__saved-link">
+                <span className="header__saved-num">0</span>
+                <img 
+                    src={bookmark} 
+                    className="header__saved-img"
+                    alt="bookmark pic"
+                />   
             </Link>
         </header>
     )
