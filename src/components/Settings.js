@@ -15,7 +15,7 @@ export default function Settings() {
                 </button>
             </section>
             <section className="settings__section">
-                <h4 className="settings__section-title">
+                <h4 className="settings__section-title ">
                     Text Settings
                 </h4>
                 <div>

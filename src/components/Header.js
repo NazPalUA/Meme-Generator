@@ -7,10 +7,10 @@ import {Link} from "react-router-dom"
 export default function Header() {
     return (
         <header className="header">
-            <Link to="/" className="header__image-link">
+            <Link to="/" className="header__logo-link">
                 <img 
                     src={trollFace} 
-                    className="header__image"
+                    className="header__logo"
                     alt="troll face"
                 />      
                 <h2 className="header__title">Meme Generator</h2>
