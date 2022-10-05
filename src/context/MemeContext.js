@@ -16,7 +16,14 @@ function MemeContextProvider({children}) {
                 lineId: nanoid()
             }
         ],
-        img: "http://i.imgflip.com/1bij.jpg" 
+        img: "http://i.imgflip.com/1bij.jpg",
+        isUpperCase: false,
+        fontSize: 16,
+        color: "white",
+        fontFamily: "Arial",
+        fontWeight: "bold",
+        textShadowColor: "black",
+        textShadowBlurRadius: 2
     })
 
     function linesArr() {
@@ -41,31 +48,9 @@ function MemeContextProvider({children}) {
             /> :
             <div
                 draggable
-                onDragEnd={event => {
-                    event.target.classList.remove("dragging")
-                    const deltaX = event.clientX - dragStart.x
-                    const deltaY = event.clientY - dragStart.y
-
-                    setMeme(prevMeme => ({
-                        ...prevMeme,
-                        linesArr: prevMeme.linesArr.map(line => {
-                            if(event.target.id !== line.lineId) return line
-                            else return {...line, 
-                                top: line.top + deltaY,
-                                left: line.left + deltaX
-                            }
-                        })
-                    }))
-                }}
-                onDragStart={event => {
-                    event.target.classList.add("dragging")
-                    setDragStart({x: event.clientX, y: event.clientY})
-                }}
-
-                onDragOver={event => {
-                    event.preventDefault()
-                    
-                }}
+                onDragStart={handleDragStart}
+                onDragOver={handleDragOver}
+                onDragEnd={handleDragEnd}
 
                 key={line.lineId}
                 id={line.lineId}
@@ -76,6 +61,32 @@ function MemeContextProvider({children}) {
                 {line.text}
             </div>
         })
+    }
+
+    function handleDragStart(event) {
+        event.target.classList.add("dragging")
+        setDragStart({x: event.clientX, y: event.clientY})
+    }
+
+    function handleDragOver(event) {
+        event.preventDefault()
+    }
+
+    function handleDragEnd(event) {
+        event.target.classList.remove("dragging")
+        const deltaX = event.clientX - dragStart.x
+        const deltaY = event.clientY - dragStart.y
+
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            linesArr: prevMeme.linesArr.map(line => {
+                if(event.target.id !== line.lineId) return line
+                else return {...line, 
+                    top: line.top + deltaY,
+                    left: line.left + deltaX
+                }
+            })
+        }))
     }
 
     function handleDoubleInputClick(event, lineId) {
