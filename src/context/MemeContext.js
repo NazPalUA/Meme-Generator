@@ -4,6 +4,7 @@ import { nanoid } from "nanoid"
 const MemeContext = React.createContext()
 
 function MemeContextProvider({children}) {
+    const [dragStart, setDragStart] = useState({x: 0, y: 0})
 
     const [meme, setMeme] = useState({
         linesArr: [
@@ -13,25 +14,10 @@ function MemeContextProvider({children}) {
                 top: 10,
                 left: 25,
                 lineId: nanoid()
-            },
-            {
-                text: "second line",
-                active: false,
-                top: 100,
-                left: 25,
-                lineId: nanoid()
-            },
-            {
-                text: "third line",
-                active: false,
-                top: 200,
-                left: 25,
-                lineId: nanoid()
             }
         ],
         img: "http://i.imgflip.com/1bij.jpg" 
     })
-
 
     function linesArr() {
         return meme.linesArr.map(line => {
@@ -39,19 +25,61 @@ function MemeContextProvider({children}) {
                 top: `${line.top}px`,
                 left: `${line.left}px`,
             }
-            return <input 
+            return line.active ?
+            <input autoFocus
                 key={line.lineId}
                 id={line.lineId}
                 type="text"
                 placeholder="Type here"
-                className={line.active ? "meme__text active" : "meme__text"}
+                className={"meme__text active"}
                 name="topText"
                 value={line.text}
                 onChange={handleInputChange}
-                onClick={() => setActive(line.lineId)}
                 style={style}
-            />
+                onFocus={(event) => event.target.select()}
+                onBlur={() => removeActive()}
+            /> :
+            <div
+                draggable
+                onDragEnd={event => {
+                    event.target.classList.remove("dragging")
+                    const deltaX = event.clientX - dragStart.x
+                    const deltaY = event.clientY - dragStart.y
+
+                    setMeme(prevMeme => ({
+                        ...prevMeme,
+                        linesArr: prevMeme.linesArr.map(line => {
+                            if(event.target.id !== line.lineId) return line
+                            else return {...line, 
+                                top: line.top + deltaY,
+                                left: line.left + deltaX
+                            }
+                        })
+                    }))
+                }}
+                onDragStart={event => {
+                    event.target.classList.add("dragging")
+                    setDragStart({x: event.clientX, y: event.clientY})
+                }}
+
+                onDragOver={event => {
+                    event.preventDefault()
+                    
+                }}
+
+                key={line.lineId}
+                id={line.lineId}
+                className={"meme__text no-select"}
+                onDoubleClick={(event) => handleDoubleInputClick(event, line.lineId)}
+                style={style}
+            >
+                {line.text}
+            </div>
         })
+    }
+
+    function handleDoubleInputClick(event, lineId) {
+        setActive(lineId)
     }
 
     function handleInputChange(event) {
@@ -87,22 +115,6 @@ function MemeContextProvider({children}) {
         }))
     }
 
-    function moveLine(direction) {
-        const leftMove = direction === "right" ? 10 : direction === "left" ? -10 : 0
-        const topMove = direction === "top" ? -10 : direction === "bottom" ? 10 : 0
-        
-        setMeme(prevMeme => ({
-            ...prevMeme,
-            linesArr: prevMeme.linesArr.map(line => {
-                if(!line.active) return line
-                else return {...line, 
-                    top: line.top + topMove,
-                    left: line.left + leftMove
-                }
-            })
-        }))
-    }
-
     function setActive(id) {
         setMeme(prevMeme => ({
             ...prevMeme,
@@ -112,14 +124,22 @@ function MemeContextProvider({children}) {
             })
         }))
     }
+
+    function removeActive() {
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            linesArr: prevMeme.linesArr.map(line => {
+                return {...line, active: false}
+            })
+        }))
+    }
     
     return (
         <MemeContext.Provider value={{
             meme,
             addLine,
             setImg,
-            linesArr,
-            moveLine
+            linesArr
         }}>
             {children}
         </MemeContext.Provider>
