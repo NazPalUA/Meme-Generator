@@ -17,18 +17,53 @@ function MemeContextProvider({children}) {
             }
         ],
         img: "http://i.imgflip.com/1bij.jpg",
-        isUpperCase: false,
-        fontSize: 16,
-        color: "white",
-        fontFamily: "Arial",
+        isUpperCase: true,
+        fontSize: 30,
+        color: "#ffffff",
+        fontFamily: "Calibri, Candara, sans-serif",
         fontWeight: "bold",
         textShadowColor: "black",
         textShadowBlurRadius: 2
     })
 
+    function setFontFamily(event) {
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            fontFamily: event.target.value
+        }))
+    }
+
+    function setColor(event) {
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            color: event.target.value
+        }))
+    }
+
+    function changeTextSize(event) {
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            fontSize: event.target.value === "+" ? prevMeme.fontSize + 1 :
+                event.target.value === "-" ? prevMeme.fontSize - 1 : 16
+        }))
+    }
+
+    function toggleUpperCase() {
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            isUpperCase: !prevMeme.isUpperCase
+        }))
+    }
+
     function linesArr() {
+        const style = {
+            textTransform: meme.isUpperCase ? "uppercase" : "unset",
+            fontSize: `${meme.fontSize}px`,
+            color: meme.color,
+            fontFamily: meme.fontFamily,
+        }
         return meme.linesArr.map(line => {
-            const style = {
+            const positionStyle = {
                 top: `${line.top}px`,
                 left: `${line.left}px`,
             }
@@ -38,11 +73,11 @@ function MemeContextProvider({children}) {
                 id={line.lineId}
                 type="text"
                 placeholder="Type here"
-                className={"meme__text active"}
+                className={`meme__text active`}
                 name="topText"
                 value={line.text}
                 onChange={handleInputChange}
-                style={style}
+                style={{...style, ...positionStyle}}
                 onFocus={(event) => event.target.select()}
                 onBlur={() => removeActive()}
             /> :
@@ -54,9 +89,9 @@ function MemeContextProvider({children}) {
 
                 key={line.lineId}
                 id={line.lineId}
-                className={"meme__text no-select"}
+                className={`meme__text no-select`}
                 onDoubleClick={(event) => handleDoubleInputClick(event, line.lineId)}
-                style={style}
+                style={{...style, ...positionStyle}}
             >
                 {line.text}
             </div>
@@ -150,7 +185,11 @@ function MemeContextProvider({children}) {
             meme,
             addLine,
             setImg,
-            linesArr
+            linesArr,
+            toggleUpperCase,
+            changeTextSize,
+            setColor,
+            setFontFamily
         }}>
             {children}
         </MemeContext.Provider>
