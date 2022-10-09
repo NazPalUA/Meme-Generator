@@ -29,6 +29,16 @@ function MemeContextProvider({children}) {
         textShadowSize: 2
     })
 
+    function handleSettingsChange(event) {
+        const {name, value, type, checked} = event.target
+        setMeme(prevMeme => {
+            return {
+                ...prevMeme,
+                [name]: type === "checkbox" ? checked : value
+            }
+        })
+    }
+
     function centerText() {
         const lineWidth = document.getElementById(meme.lastActiveLineId).clientWidth
         const memeWidth = memeRef.current.clientWidth
@@ -41,14 +51,6 @@ function MemeContextProvider({children}) {
                 }
             })
         }))
-
-    }
-
-    function setFontWeight(event) {
-        setMeme(prevMeme => ({
-            ...prevMeme,
-            fontWeight: event.target.value
-        }))
     }
 
     function changeShadowSize(event) {
@@ -59,26 +61,7 @@ function MemeContextProvider({children}) {
         }))
     }
 
-    function setTextShadowColor(event) {
-        setMeme(prevMeme => ({
-            ...prevMeme,
-            textShadowColor: event.target.value
-        }))       
-    }
 
-    function setFontFamily(event) {
-        setMeme(prevMeme => ({
-            ...prevMeme,
-            fontFamily: event.target.value
-        }))
-    }
-
-    function setColor(event) {
-        setMeme(prevMeme => ({
-            ...prevMeme,
-            color: event.target.value
-        }))
-    }
 
     function changeTextSize(event) {
         setMeme(prevMeme => ({
@@ -242,11 +225,8 @@ function MemeContextProvider({children}) {
             linesArr,
             toggleUpperCase,
             changeTextSize,
-            setColor,
-            setFontFamily,
-            setTextShadowColor,
             changeShadowSize,
-            setFontWeight,
+            handleSettingsChange,
             centerText
         }}>
             {children}
