@@ -147,6 +147,7 @@ function MemeContextProvider({children}) {
 
         setMeme(prevMeme => ({
             ...prevMeme,
+            lastActiveLineId: event.target.id,
             linesArr: prevMeme.linesArr.map(line => {
                 if(event.target.id !== line.lineId) return line
                 else return {...line, 
@@ -175,14 +176,16 @@ function MemeContextProvider({children}) {
     }
     
     function addLine() {
+        const id = nanoid()
         setMeme(prevMeme => ({
             ...prevMeme,
+            lastActiveLineId: id,
             linesArr: [...prevMeme.linesArr, {
                 text: "new line",
                 active: false,
                 top: 300,
                 left: 25,
-                lineId: nanoid()
+                lineId: id
             }]
         }))
     }

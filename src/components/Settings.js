@@ -16,13 +16,13 @@ export default function Settings() {
     const fontsData = {
         fontWeight: [            
             {name: "Regular", value: 400}, 
-            {name: "Semi Bold", value: 500}, 
-            {name: "Bold", value: 600}
+            {name: "Medium", value: 500}, 
+            {name: "Bold", value: 700}
         ],
         fontFamily: [
             {name: "Arial", value: "Arial, Helvetica, sans-serif"}, 
             {name: "Calibri", value: "Calibri, Candara, sans-serif"}, 
-            {name: "Times New Roman", value: "Times New Roman, Times, serif"}
+            {name: "Roboto", value: "Roboto, sans-serif"}
         ]
     }
 
