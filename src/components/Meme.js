@@ -2,9 +2,9 @@ import React, {useContext} from "react"
 import {MemeContext} from "../context/MemeContext"
 
 export default function Meme() {
-    const {meme, linesArr} = useContext(MemeContext)
+    const {meme, linesArr, memeRef} = useContext(MemeContext)
     return (
-        <div className="meme" id="meme">
+        <div className="meme" id="meme" ref={memeRef}>
             <img 
                 draggable="false" 
                 onDragOver={event => {

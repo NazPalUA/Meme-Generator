@@ -9,7 +9,11 @@ export default function Settings() {
         toggleUpperCase, 
         changeTextSize, 
         setColor, 
-        setFontFamily
+        setFontFamily,
+        setTextShadowColor,
+        changeShadowSize,
+        setFontWeight,
+        centerText
     } = useContext(MemeContext)
     return (
         <div className="settings">
@@ -110,17 +114,63 @@ export default function Settings() {
                 </label> 
             </div>
 
-            <p className="settings__item">Shadow blur: 16px ←   →</p>
+            <div 
+                className="settings__item"
+            >
+                <span className="settings__item-text no-select">
+                    Shadow:
+                </span>
+                <button
+                    className="settings__btn settings__btn_shadow-size"
+                    value={"+"}
+                    onClick={changeShadowSize}
+                >increase Shadow</button>
+                <input 
+                    // className="settings__btn settings__btn_color"
+                    type="color"
+                    onChange={setTextShadowColor}
+                    value={meme.textShadowColor}
+                />
+                <button
+                    className="settings__btn settings__btn_shadow-size"
+                    value={"-"}
+                    onClick={changeShadowSize}
+                >Decrease Shadow</button>
+            </div>
             <div className="settings__item">
                 <span>Font weight</span>
-                <input type="radio" name="font-weight"></input>
-                <label>Regular</label>
-                <input type="radio" name="font-weight"></input>
-                <label>Semi Bold</label>
-                <input type="radio" name="font-weight"></input>
-                <label>Bold</label>
+                <input
+                    id="weight-regular"
+                    type="radio" 
+                    name="font-weight" 
+                    value="400" 
+                    checked={meme.fontWeight === "400"}
+                    onChange={setFontWeight}
+                />
+                <label htmlFor="weight-regular">Regular</label>
+                <input
+                    id="weight-semi-bold"
+                    type="radio" 
+                    name="font-weight" 
+                    value="500"
+                    checked={meme.fontWeight === "500"}
+                    onChange={setFontWeight}
+                />
+                <label htmlFor="weight-semi-bold">Semi Bold</label>
+                <input
+                    id="weight-bold"
+                    type="radio" 
+                    name="font-weight" 
+                    value="600"
+                    checked={meme.fontWeight === "600"}
+                    onChange={setFontWeight}
+                />
+                <label htmlFor="weight-bold">Bold</label>
             </div>
-            <button className="settings__btn settings__btn_center">
+            <button 
+                className="settings__btn settings__btn_center"
+                onClick={centerText}
+            >
                 Center Text
             </button>
         </div>

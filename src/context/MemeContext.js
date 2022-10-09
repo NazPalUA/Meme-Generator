@@ -1,9 +1,11 @@
-import React, {useState} from "react"
+import React, {useState, useRef} from "react"
 import { nanoid } from "nanoid"
 
 const MemeContext = React.createContext()
 
 function MemeContextProvider({children}) {
+    const memeRef = useRef()
+
     const [dragStart, setDragStart] = useState({x: 0, y: 0})
 
     const [meme, setMeme] = useState({
@@ -13,18 +15,56 @@ function MemeContextProvider({children}) {
                 active: false,
                 top: 10,
                 left: 25,
-                lineId: nanoid()
+                lineId: "first"
             }
         ],
+        lastActiveLineId: "first",
         img: "http://i.imgflip.com/1bij.jpg",
         isUpperCase: true,
         fontSize: 30,
         color: "#ffffff",
         fontFamily: "Calibri, Candara, sans-serif",
-        fontWeight: "bold",
-        textShadowColor: "black",
-        textShadowBlurRadius: 2
+        fontWeight: "600",
+        textShadowColor: "#000000",
+        textShadowSize: 2
     })
+
+    function centerText() {
+        const lineWidth = document.getElementById(meme.lastActiveLineId).clientWidth
+        const memeWidth = memeRef.current.clientWidth
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            linesArr: prevMeme.linesArr.map(line => {
+                if(line.lineId !== meme.lastActiveLineId) return line
+                else return {...line, 
+                    left: (memeWidth-lineWidth)/2
+                }
+            })
+        }))
+
+    }
+
+    function setFontWeight(event) {
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            fontWeight: event.target.value
+        }))
+    }
+
+    function changeShadowSize(event) {
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            textShadowSize: event.target.value === "+" ? prevMeme.textShadowSize + 1 :
+                event.target.value === "-" ? prevMeme.textShadowSize - 1 : 16
+        }))
+    }
+
+    function setTextShadowColor(event) {
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            textShadowColor: event.target.value
+        }))       
+    }
 
     function setFontFamily(event) {
         setMeme(prevMeme => ({
@@ -61,6 +101,17 @@ function MemeContextProvider({children}) {
             fontSize: `${meme.fontSize}px`,
             color: meme.color,
             fontFamily: meme.fontFamily,
+            textShadow: 
+                `${meme.textShadowSize}px ${meme.textShadowSize}px 0 ${meme.textShadowColor},
+                -${meme.textShadowSize}px -${meme.textShadowSize}px 0 ${meme.textShadowColor},
+                ${meme.textShadowSize}px -${meme.textShadowSize}px 0 ${meme.textShadowColor},
+                -${meme.textShadowSize}px ${meme.textShadowSize}px 0 ${meme.textShadowColor},
+                0 ${meme.textShadowSize}px 0 ${meme.textShadowColor},
+                ${meme.textShadowSize}px 0 0 ${meme.textShadowColor},
+                0 -${meme.textShadowSize}px 0 ${meme.textShadowColor},
+                -${meme.textShadowSize}px 0 0 ${meme.textShadowColor},
+                ${meme.textShadowSize}px ${meme.textShadowSize}px 5px ${meme.textShadowColor}`,
+            fontWeight: meme.fontWeight,
         }
         return meme.linesArr.map(line => {
             const positionStyle = {
@@ -79,7 +130,8 @@ function MemeContextProvider({children}) {
                 onChange={handleInputChange}
                 style={{...style, ...positionStyle}}
                 onFocus={(event) => event.target.select()}
-                onBlur={() => removeActive()}
+                onBlur={() => removeActive(line.lineId)}
+                size={line.text.length}
             /> :
             <div
                 draggable
@@ -171,25 +223,31 @@ function MemeContextProvider({children}) {
         }))
     }
 
-    function removeActive() {
+    function removeActive(lastActiveLineId) {
         setMeme(prevMeme => ({
             ...prevMeme,
             linesArr: prevMeme.linesArr.map(line => {
                 return {...line, active: false}
-            })
+            }),
+            lastActiveLineId: lastActiveLineId
         }))
     }
     
     return (
         <MemeContext.Provider value={{
             meme,
+            memeRef,
             addLine,
             setImg,
             linesArr,
             toggleUpperCase,
             changeTextSize,
             setColor,
-            setFontFamily
+            setFontFamily,
+            setTextShadowColor,
+            changeShadowSize,
+            setFontWeight,
+            centerText
         }}>
             {children}
         </MemeContext.Provider>
