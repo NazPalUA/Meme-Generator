@@ -12,6 +12,50 @@ export default function Settings() {
         handleSettingsChange,
         centerText
     } = useContext(MemeContext)
+
+    const fontsData = {
+        fontWeight: [            
+            {name: "Regular", value: 400}, 
+            {name: "Semi Bold", value: 500}, 
+            {name: "Bold", value: 600}
+        ],
+        fontFamily: [
+            {name: "Arial", value: "Arial, Helvetica, sans-serif"}, 
+            {name: "Calibri", value: "Calibri, Candara, sans-serif"}, 
+            {name: "Times New Roman", value: "Times New Roman, Times, serif"}
+        ]
+    }
+
+    const fontsFamilyArrHTML = fontsData.fontFamily.map(font => (
+        <React.Fragment key={font.name}>
+            <input 
+                type="radio" 
+                name="fontFamily" 
+                id={font.name}
+                value={font.value}
+                checked={meme.fontFamily === font.value}
+                onChange={handleSettingsChange}
+            />
+            <label htmlFor={font.name}>
+                {font.name}
+            </label> 
+        </React.Fragment>
+    ))
+
+    const fontsWeightArrHTML = fontsData.fontWeight.map(weight => (
+        <React.Fragment key={weight.value}>
+            <input
+                id={weight.value}
+                type="radio" 
+                name="fontWeight" 
+                value={weight.value}
+                checked={`${meme.fontWeight}` === `${weight.value}`}
+                onChange={handleSettingsChange}
+            />
+            <label htmlFor={weight.value} className="no-select">{weight.name}</label>
+        </React.Fragment>
+    ))
+
     return (
         <div className="settings">
             <button 
@@ -79,39 +123,7 @@ export default function Settings() {
                 <span className="settings__item-text no-select">
                     Font:
                 </span>
-                <input 
-                    type="radio" 
-                    name="fontFamily" 
-                    id="Arial"
-                    value="Arial, Helvetica, sans-serif"
-                    checked={meme.fontFamily === "Arial, Helvetica, sans-serif"}
-                    onChange={handleSettingsChange}
-                />
-                <label htmlFor="Arial">
-                    Arial
-                </label> 
-                <input 
-                    type="radio" 
-                    name="fontFamily" 
-                    id="Calibri"
-                    value="Calibri, Candara, sans-serif"
-                    checked={meme.fontFamily === "Calibri, Candara, sans-serif"}
-                    onChange={handleSettingsChange}
-                />
-                <label htmlFor="Calibri">
-                    Calibri
-                </label> 
-                <input 
-                    type="radio" 
-                    name="fontFamily" 
-                    id="Times"
-                    value="Times New Roman, Times, serif"
-                    checked={meme.fontFamily === "Times New Roman, Times, serif"}
-                    onChange={handleSettingsChange}
-                />
-                <label htmlFor="Times">
-                    Times New Roman
-                </label> 
+                {fontsFamilyArrHTML}
             </div>
 
             <div 
@@ -140,33 +152,7 @@ export default function Settings() {
             </div>
             <div className="settings__item">
                 <span>Font weight</span>
-                <input
-                    id="weight-regular"
-                    type="radio" 
-                    name="fontWeight" 
-                    value="400" 
-                    checked={meme.fontWeight === "400"}
-                    onChange={handleSettingsChange}
-                />
-                <label htmlFor="weight-regular">Regular</label>
-                <input
-                    id="weight-semi-bold"
-                    type="radio" 
-                    name="fontWeight" 
-                    value="500"
-                    checked={meme.fontWeight === "500"}
-                    onChange={handleSettingsChange}
-                />
-                <label htmlFor="weight-semi-bold">Semi Bold</label>
-                <input
-                    id="weight-bold"
-                    type="radio" 
-                    name="fontWeight" 
-                    value="600"
-                    checked={meme.fontWeight === "600"}
-                    onChange={handleSettingsChange}
-                />
-                <label htmlFor="weight-bold">Bold</label>
+                {fontsWeightArrHTML}
             </div>
             <button 
                 className="settings__btn settings__btn_center"

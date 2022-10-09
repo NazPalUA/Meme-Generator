@@ -61,8 +61,6 @@ function MemeContextProvider({children}) {
         }))
     }
 
-
-
     function changeTextSize(event) {
         setMeme(prevMeme => ({
             ...prevMeme,
