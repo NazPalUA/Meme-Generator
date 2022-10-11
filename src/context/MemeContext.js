@@ -61,11 +61,11 @@ function MemeContextProvider({children}) {
         }))
     }
 
-    function changeTextSize(event) {
+    function changeTextSize(target) {
         setMeme(prevMeme => ({
             ...prevMeme,
-            fontSize: event.target.value === "+" ? prevMeme.fontSize + 1 :
-                event.target.value === "-" ? prevMeme.fontSize - 1 : 16
+            fontSize: target.value === "+" ? prevMeme.fontSize + 1 :
+                target.value === "-" ? prevMeme.fontSize - 1 : 16
         }))
     }
 

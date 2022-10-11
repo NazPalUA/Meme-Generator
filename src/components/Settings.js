@@ -1,6 +1,8 @@
 import React, {useContext} from "react"
 import '../css/settings.css'
 import {MemeContext} from "../context/MemeContext"
+import resizeLeft from "../images/resize-left.png"
+import resizeRight from "../images/resize-right.png"
 
 export default function Settings() {
     const {
@@ -80,18 +82,29 @@ export default function Settings() {
 
             <div className="settings__item">
                 <span className="settings__item-text no-select">
-                    Text size: {meme.fontSize}
+                    Text size: 
                 </span> 
                 <button 
-                    className="settings__btn settings__btn_text-size"
+                    className="settings__btn_text-size settings__btn_text-size-left"
                     value={"-"}
-                    onClick={changeTextSize}
-                >←</button>
+                    onClick={(e) => changeTextSize(e.currentTarget)}
+                >
+                    <img
+                        src={resizeLeft}
+                        alt=""
+                    />             
+                </button>
+                <span>{meme.fontSize}</span>
                 <button 
-                    className="settings__btn settings__btn_text-size"
+                    className="settings__btn_text-size"
                     value={"+"}
-                    onClick={changeTextSize}
-                >→</button>
+                    onClick={(e) => changeTextSize(e.currentTarget)}
+                >
+                <img
+                    src={resizeRight}
+                    alt=""
+                    />  
+                </button>
             </div>
 
             <div className="settings__item">
