@@ -17,7 +17,7 @@ export default function Settings() {
 
     const fontsData = {
         fontWeight: [            
-            {name: "Regular", value: 400}, 
+            // {name: "Regular", value: 400}, 
             {name: "Medium", value: 500}, 
             {name: "Bold", value: 700}
         ],
@@ -77,7 +77,9 @@ export default function Settings() {
                 <label 
                     className="settings__item-text no-select" 
                     htmlFor="upper-case"
-                >Upper Case</label>
+                >
+                    Upper Case
+                </label>
             </div>
 
             <div className="settings__item">
@@ -85,7 +87,7 @@ export default function Settings() {
                     Text size: 
                 </span> 
                 <button 
-                    className="settings__btn_text-size settings__btn_text-size-left"
+                    className="settings__btn_re-size"
                     value={"-"}
                     onClick={(e) => changeTextSize(e.currentTarget)}
                 >
@@ -96,7 +98,7 @@ export default function Settings() {
                 </button>
                 <span>{meme.fontSize}</span>
                 <button 
-                    className="settings__btn_text-size"
+                    className="settings__btn_re-size"
                     value={"+"}
                     onClick={(e) => changeTextSize(e.currentTarget)}
                 >
@@ -112,19 +114,21 @@ export default function Settings() {
                     Text color:
                 </span>
                 <button
-                    className="settings__btn settings__btn_color"
+                    className="settings__btn-color"
                     value={"#000000"}
                     name="color"
                     onClick={handleSettingsChange}
-                >black</button>
+                    style={{backgroundColor: "black"}}
+                ></button>
                 <button
-                    className="settings__btn settings__btn_color"
+                    className="settings__btn-color"
                     value={"#ffffff"}
                     name="color"
                     onClick={handleSettingsChange}
-                >white</button>
+                    style={{backgroundColor: "white"}}
+                ></button>
                 <input 
-                    // className="settings__btn settings__btn_color"
+                    className="settings__btn-color settings__btn-color_input"
                     type="color"
                     name="color"
                     onChange={handleSettingsChange}
@@ -146,22 +150,32 @@ export default function Settings() {
                     Shadow:
                 </span>
                 <button
-                    className="settings__btn settings__btn_shadow-size"
-                    value={"+"}
-                    onClick={changeShadowSize}
-                >increase Shadow</button>
+                    className="settings__btn_re-size"
+                    value={"-"}
+                    onClick={(e) => changeShadowSize(e.currentTarget)}
+                >
+                    <img
+                        src={resizeLeft}
+                        alt=""
+                    /> 
+                </button>
                 <input 
-                    // className="settings__btn settings__btn_color"
+                    className="settings__btn-color"
                     type="color"
                     name="textShadowColor"
                     onChange={handleSettingsChange}
                     value={meme.textShadowColor}
                 />
                 <button
-                    className="settings__btn settings__btn_shadow-size"
-                    value={"-"}
-                    onClick={changeShadowSize}
-                >Decrease Shadow</button>
+                    className="settings__btn_re-size"
+                    value={"+"}
+                    onClick={(e) => changeShadowSize(e.currentTarget)}
+                >
+                    <img
+                        src={resizeRight}
+                        alt=""
+                    /> 
+                </button>
             </div>
             <div className="settings__item">
                 <span>Font weight</span>

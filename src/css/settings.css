@@ -41,12 +41,22 @@
     padding: none;
 }
 
-.settings__btn_text-size-left {
+.settings__btn_re-size {
     height: 35px;
     width: 35px;
-    /* background-image: url("../images/resize-left.png"); */
+    background: none;
+    border: none;
 }
 
-.settings__btn_text-size img {
+.settings__btn_re-size img {
     width: 30px;
+}
+
+.settings__btn-color {
+    height: 30px;
+    width: 30px;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0 5px;
 }

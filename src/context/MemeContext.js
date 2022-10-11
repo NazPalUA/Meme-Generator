@@ -53,11 +53,11 @@ function MemeContextProvider({children}) {
         }))
     }
 
-    function changeShadowSize(event) {
+    function changeShadowSize(target) {
         setMeme(prevMeme => ({
             ...prevMeme,
-            textShadowSize: event.target.value === "+" ? prevMeme.textShadowSize + 1 :
-                event.target.value === "-" ? prevMeme.textShadowSize - 1 : 16
+            textShadowSize: target.value === "+" ? prevMeme.textShadowSize + 1 :
+                target.value === "-" ? prevMeme.textShadowSize - 1 : 16
         }))
     }
 
