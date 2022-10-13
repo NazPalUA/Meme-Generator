@@ -14,11 +14,34 @@ export default function MemeContainer() {
         setImg(url, name)
     }
 
+    function uploadImage(e) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+        // convert file to base64 String
+        const base64String = reader.result.replace('data:', '').replace(/^.+,/, '')
+        // store file
+        // localStorage.setItem('wallpaper', base64String)
+        // display image
+        const imgUrl = `data:image/png;base64,${base64String}`
+        // console.log(imgUrl)
+        setImg(imgUrl, "name")
+        };
+        reader.readAsDataURL(file);
+    }
+
     return (
         <div className="meme-container">
-
+            <input 
+                type='file' 
+                id="uploadBannerImage" 
+                name="uploadBannerImage"
+                onChange={uploadImage}
+                style={{display: "none"}} 
+            />
             <button 
                 className="meme__button meme__button_1"
+                onClick={()=>document.getElementById("uploadBannerImage").click()}
             >
                 Upload
             </button>
