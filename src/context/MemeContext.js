@@ -20,6 +20,7 @@ function MemeContextProvider({children}) {
         ],
         lastActiveLineId: "first",
         img: "http://i.imgflip.com/1bij.jpg",
+        name: "",
         isUpperCase: true,
         fontSize: 30,
         color: "#ffffff",
@@ -28,6 +29,17 @@ function MemeContextProvider({children}) {
         textShadowColor: "#000000",
         textShadowSize: 2
     })
+
+    const [allMemes, setAllMemes] = React.useState([])
+    
+    React.useEffect(() => {
+        async function getMemes() {
+            const res = await fetch("https://api.imgflip.com/get_memes")
+            const data = await res.json()
+            setAllMemes(data.data.memes)
+        }
+        getMemes()
+    }, []) 
 
     function handleSettingsChange(event) {
         const {name, value, type, checked} = event.target
@@ -190,10 +202,11 @@ function MemeContextProvider({children}) {
         }))
     }
 
-    function setImg(url) {
+    function setImg(url, name) {
         setMeme(prevMeme => ({
             ...prevMeme,
-            img: url
+            img: url,
+            name: name
         }))
     }
 
@@ -221,6 +234,7 @@ function MemeContextProvider({children}) {
         <MemeContext.Provider value={{
             meme,
             memeRef,
+            allMemes,
             addLine,
             setImg,
             linesArr,
