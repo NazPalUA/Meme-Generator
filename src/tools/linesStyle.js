@@ -1,3 +1,5 @@
+// import getPixels from "./getPixels"
+
 export default function linesStyle(meme) {
     return (
         {
