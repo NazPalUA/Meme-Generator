@@ -41,6 +41,15 @@ function MemeContextProvider({children}) {
         getMemes()
     }, []) 
 
+    function addToAllMemes(id , url) {
+        setAllMemes(prev => {
+            return [
+                {id, url},
+                ...prev
+            ]
+        })
+    }
+
     function handleSettingsChange(event) {
         const {name, value, type, checked} = event.target
         setMeme(prevMeme => {
@@ -242,7 +251,8 @@ function MemeContextProvider({children}) {
             changeTextSize,
             changeShadowSize,
             handleSettingsChange,
-            centerText
+            centerText,
+            addToAllMemes
         }}>
             {children}
         </MemeContext.Provider>

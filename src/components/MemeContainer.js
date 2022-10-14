@@ -3,9 +3,10 @@ import downloadHTML from "../tools/downloadHTML"
 import Meme from "./Meme"
 import '../css/meme-container.css'
 import {MemeContext} from "../context/MemeContext"
+import { nanoid } from "nanoid"
 
 export default function MemeContainer() {
-    const {setImg, allMemes} = useContext(MemeContext)
+    const {setImg, allMemes, addToAllMemes} = useContext(MemeContext)
     
     function getMemeImage() {
         const randomNumber = Math.floor(Math.random() * allMemes.length)
@@ -18,16 +19,19 @@ export default function MemeContainer() {
         const file = e.target.files[0];
         const reader = new FileReader();
         reader.onloadend = () => {
-        // convert file to base64 String
-        const base64String = reader.result.replace('data:', '').replace(/^.+,/, '')
-        // store file
-        // localStorage.setItem('wallpaper', base64String)
-        // display image
-        const imgUrl = `data:image/png;base64,${base64String}`
-        // console.log(imgUrl)
-        setImg(imgUrl, "name")
-        };
-        reader.readAsDataURL(file);
+            const id = nanoid()
+            // convert file to base64 String
+            const base64String = reader.result.replace('data:', '').replace(/^.+,/, '')
+            // store file
+            // localStorage.setItem('wallpaper', base64String)
+            // display image
+            const imgUrl = `data:image/png;base64,${base64String}`
+            // console.log(imgUrl)
+            setImg(imgUrl, "name")
+            addToAllMemes(id, imgUrl)
+        }
+        reader.readAsDataURL(file)
+
     }
 
     return (
