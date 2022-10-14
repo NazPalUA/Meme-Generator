@@ -1,5 +1,6 @@
 import React, {useState, useRef} from "react"
 import { nanoid } from "nanoid"
+import linesStyle from "../tools/linesStyle"
 
 const MemeContext = React.createContext()
 
@@ -98,23 +99,7 @@ function MemeContextProvider({children}) {
     }
 
     function linesArr() {
-        const style = {
-            textTransform: meme.isUpperCase ? "uppercase" : "unset",
-            fontSize: `${meme.fontSize}px`,
-            color: meme.color,
-            fontFamily: meme.fontFamily,
-            textShadow: 
-                `${meme.textShadowSize}px ${meme.textShadowSize}px 0 ${meme.textShadowColor},
-                -${meme.textShadowSize}px -${meme.textShadowSize}px 0 ${meme.textShadowColor},
-                ${meme.textShadowSize}px -${meme.textShadowSize}px 0 ${meme.textShadowColor},
-                -${meme.textShadowSize}px ${meme.textShadowSize}px 0 ${meme.textShadowColor},
-                0 ${meme.textShadowSize}px 0 ${meme.textShadowColor},
-                ${meme.textShadowSize}px 0 0 ${meme.textShadowColor},
-                0 -${meme.textShadowSize}px 0 ${meme.textShadowColor},
-                -${meme.textShadowSize}px 0 0 ${meme.textShadowColor},
-                ${meme.textShadowSize}px ${meme.textShadowSize}px 5px ${meme.textShadowColor}`,
-            fontWeight: meme.fontWeight,
-        }
+        const style = linesStyle(meme)
         return meme.linesArr.map(line => {
             const positionStyle = {
                 top: `${line.top}px`,

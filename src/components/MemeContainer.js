@@ -3,10 +3,12 @@ import downloadHTML from "../tools/downloadHTML"
 import Meme from "./Meme"
 import '../css/meme-container.css'
 import {MemeContext} from "../context/MemeContext"
+import {SavedContext} from "../context/SavedContext"
 import { nanoid } from "nanoid"
 
 export default function MemeContainer() {
-    const {setImg, allMemes, addToAllMemes} = useContext(MemeContext)
+    const {meme, setImg, allMemes, addToAllMemes} = useContext(MemeContext)
+    const {addToSaved} = useContext(SavedContext)
     
     function getMemeImage() {
         const randomNumber = Math.floor(Math.random() * allMemes.length)
@@ -68,6 +70,7 @@ export default function MemeContainer() {
 
             <button 
                 className="meme__button meme__button_4"
+                onClick={() => addToSaved(meme)}
             >
                 Save
             </button>

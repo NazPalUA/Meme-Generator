@@ -4,11 +4,21 @@ import React, {useState} from "react"
 const SavedContext = React.createContext()
 
 function SavedContextProvider({children}) {
-    const [savedMemes, setSavedMemes] = useState([])
+    const [savedMemes, setSavedMemes] = useState( () => {
+        const storageData = localStorage.getItem("saved")
+        return storageData ? JSON.parse(storageData) : []
+    })
+
+    function addToSaved(meme) {
+        setSavedMemes(prev => [meme, ...prev])
+    }
+
+    console.log(savedMemes)
     
     return (
         <SavedContext.Provider value={{
-            savedMemes
+            savedMemes,
+            addToSaved
         }}>
             {children}
         </SavedContext.Provider>
