@@ -1,6 +1,6 @@
 import React, {useState, useRef} from "react"
 import { nanoid } from "nanoid"
-import linesStyle from "../tools/linesStyle"
+import {getPercentage} from "../tools/convertor"
 
 const MemeContext = React.createContext()
 
@@ -23,12 +23,12 @@ function MemeContextProvider({children}) {
         img: "http://i.imgflip.com/1bij.jpg",
         name: "",
         isUpperCase: true,
-        fontSize: 30,
+        fontSize: 12,
         color: "#ffffff",
         fontFamily: "Calibri, Candara, sans-serif",
         fontWeight: "600",
         textShadowColor: "#000000",
-        textShadowSize: 2
+        textShadowSize: 10
     })
 
     const [allMemes, setAllMemes] = React.useState([])
@@ -69,7 +69,7 @@ function MemeContextProvider({children}) {
             linesArr: prevMeme.linesArr.map(line => {
                 if(line.lineId !== meme.lastActiveLineId) return line
                 else return {...line, 
-                    left: (memeWidth-lineWidth)/2
+                    left: getPercentage((memeWidth-lineWidth)/2, memeWidth)
                 }
             })
         }))

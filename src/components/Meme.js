@@ -1,10 +1,24 @@
-import React, {useContext, useState} from "react"
+import React, {useContext, useState, useLayoutEffect} from "react"
 import {MemeContext} from "../context/MemeContext"
 import linesStyle from "../tools/linesStyle"
+import {getPixels, getPercentage} from "../tools/convertor"
 
 export default function Meme() {
-    const {meme, memeRef, removeActive, handleInputChange, setActive, moveLine} = useContext(MemeContext)
+    const {meme, memeRef, removeActive, handleInputChange, setActive, moveLine} = 
+        useContext(MemeContext)
     const [dragStart, setDragStart] = useState({x: 0, y: 0})
+
+    const [width, setWidth] = useState(0)
+
+    useLayoutEffect(() => {
+        function updateSize() {
+            setWidth(memeRef.current.clientWidth)
+        }
+        window.addEventListener('resize', updateSize)
+        updateSize()
+        return () => window.removeEventListener('resize', updateSize)
+    }, [])
+
 
     function handleDragStart(event) {
         event.target.classList.add("dragging")
@@ -15,7 +29,7 @@ export default function Meme() {
         event.preventDefault()
     }
 
-    function handleDoubleInputClick(event, lineId) {
+    function handleDoubleInputClick(lineId) {
         setActive(lineId)
     }
 
@@ -23,15 +37,15 @@ export default function Meme() {
         event.target.classList.remove("dragging")
         const deltaX = event.clientX - dragStart.x
         const deltaY = event.clientY - dragStart.y
-        moveLine(event.target.id, deltaX, deltaY)
+        moveLine(event.target.id, getPercentage(deltaX, width), getPercentage(deltaY, width))
     }
 
     function linesArr() {
-        const style = linesStyle(meme)
+        const style = linesStyle(meme, width)
         return meme.linesArr.map(line => {
             const positionStyle = {
-                top: `${line.top}px`,
-                left: `${line.left}px`,
+                top: getPixels(line.top, width)+"px",
+                left: getPixels(line.left, width)+"px",
             }
             return line.active ?
             <input autoFocus
