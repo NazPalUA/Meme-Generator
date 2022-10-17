@@ -71,7 +71,7 @@ export default function Meme() {
                 key={line.lineId}
                 id={line.lineId}
                 className={`meme__text no-select`}
-                onDoubleClick={(event) => handleDoubleInputClick(event, line.lineId)}
+                onDoubleClick={() => handleDoubleInputClick(line.lineId)}
                 style={{...style, ...positionStyle}}
             >
                 {line.text}

@@ -7,8 +7,6 @@ const MemeContext = React.createContext()
 function MemeContextProvider({children}) {
     const memeRef = useRef()
 
-
-
     const [meme, setMeme] = useState({
         linesArr: [
             {
@@ -136,8 +134,8 @@ function MemeContextProvider({children}) {
             linesArr: [...prevMeme.linesArr, {
                 text: "new line",
                 active: false,
-                top: 300,
-                left: 25,
+                top: 5,
+                left: 5,
                 lineId: id
             }]
         }))

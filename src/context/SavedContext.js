@@ -12,8 +12,6 @@ function SavedContextProvider({children}) {
     function addToSaved(meme) {
         setSavedMemes(prev => [meme, ...prev])
     }
-
-    console.log(savedMemes)
     
     return (
         <SavedContext.Provider value={{
