@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, {useContext, useRef} from "react"
 import downloadHTML from "../tools/downloadHTML"
 import Meme from "./Meme"
 import '../css/meme-container.css'
@@ -36,6 +36,8 @@ export default function MemeContainer() {
 
     }
 
+    const inputRef = useRef(null)
+
     return (
         <div className="meme-container">
             <input 
@@ -58,6 +60,25 @@ export default function MemeContainer() {
             >
                 Get a new meme image 🖼
             </button>
+
+            <form className="meme__url-form">
+                <input 
+                    className="meme__url-input"
+                    type="text"
+                    placeholder="past image link"
+                    ref={inputRef}
+                />
+                <button 
+                    className="meme__button meme__button_url"
+                    onClick={(e) => {
+                        e.preventDefault()
+                        setImg(inputRef.current.value, "name")
+                        addToAllMemes(nanoid(), inputRef.current.value)
+                    }}
+                >
+                    Get Image
+                </button>
+            </form>
 
             <Meme />
 

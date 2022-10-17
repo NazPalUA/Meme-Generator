@@ -3,9 +3,10 @@
   align-self: flex-start;
 
   display: grid;
-  grid-template: auto auto auto / 1fr 1fr;
+  grid-template: auto auto auto auto / 1fr 1fr;
   grid-template-areas: 
     "button1 button2"
+    "input input"
     "meme meme"
     "button3 button4";
   gap: 17px;
@@ -25,6 +26,8 @@
 
 .meme__button_2 { grid-area: button2; }
 
+.meme__url-form {grid-area: input; }
+
 .meme__button_3 { grid-area: button3; }
 
 .meme__button_4 { grid-area: button4; }
@@ -39,6 +42,25 @@
   width: 100%;
   padding: 10px;
 }
+
+.meme__url-form {
+  display: flex;
+  outline: 1px solid black;
+  border-radius: 5px;
+}
+
+.meme__url-input {
+  flex: 4 1 auto;
+  border: none;
+}
+
+.meme__button_url {
+  flex: 1 1 auto;
+  width: unset;
+  border-radius: 0;
+  padding: 5px 5px;
+}
+
   
 .meme__image {
   width: 100%;
