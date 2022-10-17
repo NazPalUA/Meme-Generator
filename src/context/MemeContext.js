@@ -26,7 +26,7 @@ function MemeContextProvider({children}) {
         fontSize: 12,
         color: "#ffffff",
         fontFamily: "Calibri, Candara, sans-serif",
-        fontWeight: "600",
+        fontWeight: "700",
         textShadowColor: "#000000",
         textShadowSize: 3, //percentage from fontSize (0 - 6)
     })

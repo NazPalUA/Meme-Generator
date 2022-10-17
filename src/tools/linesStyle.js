@@ -10,6 +10,7 @@ export default function linesStyle(meme, width) {
             fontSize: getPixels(meme.fontSize, width),
             color: meme.color,
             fontFamily: meme.fontFamily,
+            fontWeight: meme.fontWeight,
             textShadow: 
                 `${textShadowSize}px ${textShadowSize}px 0 ${meme.textShadowColor},
                 -${textShadowSize}px -${textShadowSize}px 0 ${meme.textShadowColor},
@@ -19,8 +20,7 @@ export default function linesStyle(meme, width) {
                 ${textShadowSize}px 0 0 ${meme.textShadowColor},
                 0 -${textShadowSize}px 0 ${meme.textShadowColor},
                 -${textShadowSize}px 0 0 ${meme.textShadowColor},
-                ${textShadowSize}px ${textShadowSize}px 0px ${meme.textShadowColor}`,
-            fontWeight: meme.fontWeight     
+                ${textShadowSize}px ${textShadowSize}px 0px ${meme.textShadowColor}`,    
         }
     )
 }
