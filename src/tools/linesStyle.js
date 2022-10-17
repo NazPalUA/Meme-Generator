@@ -2,7 +2,8 @@ import { getPixels } from "./convertor"
 
 export default function linesStyle(meme, width) {
     console.log(width)
-    const textShadowSize = getPixels(meme.textShadowSize, width, 1000)
+    const fontSize = getPixels(meme.fontSize, width)
+    const textShadowSize = fontSize * meme.textShadowSize /100
     return (
         {
             textTransform: meme.isUpperCase ? "uppercase" : "unset",
@@ -18,7 +19,7 @@ export default function linesStyle(meme, width) {
                 ${textShadowSize}px 0 0 ${meme.textShadowColor},
                 0 -${textShadowSize}px 0 ${meme.textShadowColor},
                 -${textShadowSize}px 0 0 ${meme.textShadowColor},
-                ${textShadowSize}px ${textShadowSize}px 5px ${meme.textShadowColor}`,
+                ${textShadowSize}px ${textShadowSize}px 0px ${meme.textShadowColor}`,
             fontWeight: meme.fontWeight     
         }
     )

@@ -28,7 +28,7 @@ function MemeContextProvider({children}) {
         fontFamily: "Calibri, Candara, sans-serif",
         fontWeight: "600",
         textShadowColor: "#000000",
-        textShadowSize: 10
+        textShadowSize: 3, //percentage from fontSize (0 - 6)
     })
 
     const [allMemes, setAllMemes] = React.useState([])
@@ -78,8 +78,10 @@ function MemeContextProvider({children}) {
     function changeShadowSize(target) {
         setMeme(prevMeme => ({
             ...prevMeme,
-            textShadowSize: target.value === "+" ? prevMeme.textShadowSize + 1 :
-                target.value === "-" ? prevMeme.textShadowSize - 1 : 16
+            textShadowSize: target.value === "+" && prevMeme.textShadowSize < 6 ? 
+                prevMeme.textShadowSize + 1 :
+                target.value === "-" && prevMeme.textShadowSize > 0 ? 
+                prevMeme.textShadowSize - 1 : prevMeme.textShadowSize
         }))
     }
 
@@ -87,7 +89,7 @@ function MemeContextProvider({children}) {
         setMeme(prevMeme => ({
             ...prevMeme,
             fontSize: target.value === "+" ? prevMeme.fontSize + 1 :
-                target.value === "-" ? prevMeme.fontSize - 1 : 16
+                target.value === "-" ? prevMeme.fontSize - 1 : 12
         }))
     }
 
