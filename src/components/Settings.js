@@ -12,7 +12,7 @@ export default function Settings() {
         changeTextSize, 
         changeShadowSize,
         handleSettingsChange,
-        centerText
+        centerLine
     } = useContext(MemeContext)
 
     const fontsData = {
@@ -183,7 +183,7 @@ export default function Settings() {
             </div>
             <button 
                 className="settings__btn settings__btn_center"
-                onClick={centerText}
+                onClick={centerLine}
             >
                 Center Text
             </button>

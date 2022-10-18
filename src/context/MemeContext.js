@@ -43,7 +43,7 @@ function MemeContextProvider({children}) {
         })
     }
 
-    function centerText() {
+    function centerLine() {
         const lineWidth = document.getElementById(meme.lastActiveLineId).clientWidth
         const memeWidth = memeRef.current.clientWidth
         setMeme(prevMeme => ({
@@ -163,7 +163,7 @@ function MemeContextProvider({children}) {
             changeTextSize,
             changeShadowSize,
             handleSettingsChange,
-            centerText,
+            centerLine,
             removeActive,
             handleInputChange,
             setActive,
