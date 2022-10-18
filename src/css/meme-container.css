@@ -52,6 +52,7 @@
 .meme__url-input {
   flex: 4 1 auto;
   border: none;
+  padding: 1px 5px;
 }
 
 .meme__button_url {
