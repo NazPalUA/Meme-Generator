@@ -1,7 +1,7 @@
 import React, {useContext, useState, useLayoutEffect} from "react"
 import {MemeContext} from "../context/MemeContext"
 import linesStyle from "../tools/linesStyle"
-import {getPixels, getPercentage} from "../tools/unitsConverter"
+import {getPixels, getPercentages} from "../tools/unitsConverter"
 
 export default function Meme() {
     const {
@@ -44,7 +44,7 @@ export default function Meme() {
         event.target.classList.remove("dragging")
         const deltaX = event.clientX - dragStart.x
         const deltaY = event.clientY - dragStart.y
-        moveLine(event.target.id, getPercentage(deltaX, width), getPercentage(deltaY, width))
+        moveLine(event.target.id, getPercentages(deltaX, width), getPercentages(deltaY, width))
     }
 
     function linesArr() {

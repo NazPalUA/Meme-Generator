@@ -1,6 +1,6 @@
 import React, {useState, useRef} from "react"
 import { nanoid } from "nanoid"
-import {getPercentage} from "../tools/unitsConverter"
+import {getPercentages} from "../tools/unitsConverter"
 
 const MemeContext = React.createContext()
 
@@ -48,7 +48,7 @@ function MemeContextProvider({children}) {
             linesArr: prevMeme.linesArr.map(line => {
                 if(line.lineId !== meme.lastActiveLineId) return line
                 else return {...line, 
-                    left: getPercentage((memeWidth-lineWidth)/2, memeWidth)
+                    left: getPercentages((memeWidth-lineWidth)/2, memeWidth)
                 }
             })
         }))
