@@ -1,7 +1,7 @@
 import React from "react"
-import AllMemes from  "../components/AllMemes"
-import MemeContainer from "../components/MemeContainer"
-import Settings from "../components/Settings"
+import AllMemes from  "../components/ImagesSidebar"
+import MemeContainer from "../components/MainSection"
+import Settings from "../components/SettingsSidebar"
 import "../css/home.css"
 
 export default function Home() {

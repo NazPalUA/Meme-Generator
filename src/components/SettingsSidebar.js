@@ -1,10 +1,10 @@
 import React, {useContext} from "react"
-import '../css/settings.css'
+import '../css/settings-sidebar.css'
 import {MemeContext} from "../context/MemeContext"
 import resizeLeft from "../images/resize-left.png"
 import resizeRight from "../images/resize-right.png"
 
-export default function Settings() {
+export default function SettingsSidebar() {
     const {
         meme, 
         addLine, 

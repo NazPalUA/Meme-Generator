@@ -1,4 +1,4 @@
-import { getPixels } from "./convertor"
+import { getPixels } from "./unitsConverter"
 
 export default function linesStyle(meme, width) {
     const fontSize = getPixels(meme.fontSize, width)

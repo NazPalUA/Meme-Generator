@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function MyMemes() {
+export default function SavedMemes() {
     return (
         <div>
             My Memes

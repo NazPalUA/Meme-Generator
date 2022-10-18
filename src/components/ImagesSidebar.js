@@ -1,9 +1,9 @@
 import React, {useContext} from "react"
 import {MemeContext} from "../context/MemeContext"
 import { ImagesContext } from "../context/ImagesContext"
-import "../css/all-memes.css"
+import "../css/images-sidebar.css"
 
-export default function AllMemes() {
+export default function ImagesSidebar() {
     const {setImg} = useContext(MemeContext)
     const {imagesArr} = useContext(ImagesContext)
     const memeList = imagesArr.map(meme => {

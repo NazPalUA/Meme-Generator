@@ -1,6 +1,6 @@
 import React, {useState, useRef} from "react"
 import { nanoid } from "nanoid"
-import {getPercentage} from "../tools/convertor"
+import {getPercentage} from "../tools/unitsConverter"
 
 const MemeContext = React.createContext()
 
