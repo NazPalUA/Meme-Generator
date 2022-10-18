@@ -4,10 +4,12 @@ import Meme from "./Meme"
 import '../css/meme-container.css'
 import {MemeContext} from "../context/MemeContext"
 import {SavedContext} from "../context/SavedContext"
+import { ImagesContext } from "../context/ImagesContext"
 import { nanoid } from "nanoid"
 
 export default function MemeContainer() {
-    const {meme, setImg, imagesArr, addToAllMemes} = useContext(MemeContext)
+    const {meme, setImg} = useContext(MemeContext)
+    const {imagesArr, addToImagesArr} = useContext(ImagesContext)
     const {addToSaved} = useContext(SavedContext)
     
     function getMemeImage() {
@@ -30,7 +32,7 @@ export default function MemeContainer() {
             const imgUrl = `data:image/png;base64,${base64String}`
             // console.log(imgUrl)
             setImg(imgUrl, "name")
-            addToAllMemes(id, imgUrl)
+            addToImagesArr(id, imgUrl)
         }
         reader.readAsDataURL(file)
 
@@ -73,7 +75,7 @@ export default function MemeContainer() {
                     onClick={(e) => {
                         e.preventDefault()
                         setImg(inputRef.current.value, "name")
-                        addToAllMemes(nanoid(), inputRef.current.value)
+                        addToImagesArr(nanoid(), inputRef.current.value)
                     }}
                 >
                     Get Image

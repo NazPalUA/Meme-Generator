@@ -1,11 +1,15 @@
 import React, {useState, useRef} from "react"
 import { nanoid } from "nanoid"
 import {getPercentage} from "../tools/convertor"
+// import { ImagesContext } from "./ImagesContext"
 
 const MemeContext = React.createContext()
 
 function MemeContextProvider({children}) {
     const memeRef = useRef()
+
+    // const {imagesArr, addToImagesArr} = useContext(ImagesContext)
+
 
     const [meme, setMeme] = useState({
         linesArr: [
@@ -28,26 +32,6 @@ function MemeContextProvider({children}) {
         textShadowColor: "#000000",
         textShadowSize: 3, //percentage from fontSize (0 - 6)
     })
-
-    const [imagesArr, setImagesArr] = React.useState([])
-    
-    React.useEffect(() => {
-        async function getMemes() {
-            const res = await fetch("https://api.imgflip.com/get_memes")
-            const data = await res.json()
-            setImagesArr(data.data.memes)
-        }
-        getMemes()
-    }, []) 
-
-    function addToAllMemes(id , url) {
-        setImagesArr(prev => {
-            return [
-                {id, url},
-                ...prev
-            ]
-        })
-    }
 
     function handleSettingsChange(event) {
         const {name, value, type, checked} = event.target
@@ -173,7 +157,6 @@ function MemeContextProvider({children}) {
         <MemeContext.Provider value={{
             meme,
             memeRef,
-            imagesArr,
             addLine,
             setImg,
             toggleUpperCase,
@@ -181,7 +164,6 @@ function MemeContextProvider({children}) {
             changeShadowSize,
             handleSettingsChange,
             centerText,
-            addToAllMemes,
             removeActive,
             handleInputChange,
             setActive,

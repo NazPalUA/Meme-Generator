@@ -5,18 +5,20 @@ import App from './App'
 import { BrowserRouter } from "react-router-dom"
 import { MemeContextProvider } from './context/MemeContext'
 import { SavedContextProvider } from './context/SavedContext'
-
+import { ImagesContextProvider } from './context/ImagesContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
     <React.StrictMode>
-        <SavedContextProvider>
-                <MemeContextProvider>
-                    <BrowserRouter>
-                        <App />
-                    </BrowserRouter>
-            </MemeContextProvider>
-        </SavedContextProvider>
+        <ImagesContextProvider>
+            <SavedContextProvider>
+                    <MemeContextProvider>
+                        <BrowserRouter>
+                            <App />
+                        </BrowserRouter>
+                </MemeContextProvider>
+            </SavedContextProvider>
+        </ImagesContextProvider>
     </React.StrictMode>
 )
