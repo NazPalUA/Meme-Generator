@@ -29,19 +29,19 @@ function MemeContextProvider({children}) {
         textShadowSize: 3, //percentage from fontSize (0 - 6)
     })
 
-    const [allMemes, setAllMemes] = React.useState([])
+    const [imagesArr, setImagesArr] = React.useState([])
     
     React.useEffect(() => {
         async function getMemes() {
             const res = await fetch("https://api.imgflip.com/get_memes")
             const data = await res.json()
-            setAllMemes(data.data.memes)
+            setImagesArr(data.data.memes)
         }
         getMemes()
     }, []) 
 
     function addToAllMemes(id , url) {
-        setAllMemes(prev => {
+        setImagesArr(prev => {
             return [
                 {id, url},
                 ...prev
@@ -173,7 +173,7 @@ function MemeContextProvider({children}) {
         <MemeContext.Provider value={{
             meme,
             memeRef,
-            allMemes,
+            imagesArr,
             addLine,
             setImg,
             toggleUpperCase,

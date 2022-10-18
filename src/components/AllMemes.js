@@ -3,8 +3,8 @@ import {MemeContext} from "../context/MemeContext"
 import "../css/all-memes.css"
 
 export default function AllMemes() {
-    const {allMemes, setImg} = useContext(MemeContext)
-    const memeList = allMemes.map(meme => {
+    const {imagesArr, setImg} = useContext(MemeContext)
+    const memeList = imagesArr.map(meme => {
         return <img 
             className="meme-list__item"
             key={meme.id}

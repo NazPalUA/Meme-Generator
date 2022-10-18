@@ -7,13 +7,13 @@ import {SavedContext} from "../context/SavedContext"
 import { nanoid } from "nanoid"
 
 export default function MemeContainer() {
-    const {meme, setImg, allMemes, addToAllMemes} = useContext(MemeContext)
+    const {meme, setImg, imagesArr, addToAllMemes} = useContext(MemeContext)
     const {addToSaved} = useContext(SavedContext)
     
     function getMemeImage() {
-        const randomNumber = Math.floor(Math.random() * allMemes.length)
-        const url = allMemes[randomNumber].url
-        const name = allMemes[randomNumber].name
+        const randomNumber = Math.floor(Math.random() * imagesArr.length)
+        const url = imagesArr[randomNumber].url
+        const name = imagesArr[randomNumber].name
         setImg(url, name)
     }
 
