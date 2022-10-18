@@ -1,8 +1,8 @@
 import React from "react"
-import Header from "./components/Header"
 import { Routes, Route } from "react-router-dom"
+import Header from "./components/Header"
 import Home from "./pages/Home"
-import MyMemes from "./pages/SavedMemes"
+import SavedMemes from "./pages/SavedMemes"
 
 export default function App() {
     return (
@@ -10,7 +10,7 @@ export default function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/saved" element={<MyMemes />} />
+                <Route path="/saved" element={<SavedMemes />} />
             </Routes>
         </div>
     )

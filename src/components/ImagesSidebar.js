@@ -1,6 +1,6 @@
-import React, {useContext} from "react"
-import {MemeContext} from "../context/MemeContext"
+import React, { useContext } from "react"
 import { ImagesContext } from "../context/ImagesContext"
+import { MemeContext } from "../context/MemeContext"
 import "../css/images-sidebar.css"
 
 export default function ImagesSidebar() {

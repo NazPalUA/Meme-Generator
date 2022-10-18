@@ -1,7 +1,7 @@
-import React, {useContext, useState, useLayoutEffect} from "react"
-import {MemeContext} from "../context/MemeContext"
+import React, { useContext, useState, useLayoutEffect } from "react"
+import { MemeContext } from "../context/MemeContext"
+import { getPixels, getPercentages } from "../tools/unitsConverter"
 import linesStyle from "../tools/linesStyle"
-import {getPixels, getPercentages} from "../tools/unitsConverter"
 
 export default function Meme() {
     const {

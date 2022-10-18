@@ -1,11 +1,11 @@
-import React, {useContext, useRef} from "react"
-import downloadHTML from "../tools/downloadHTML"
-import Meme from "./Meme"
-import '../css/main-section.css'
-import {MemeContext} from "../context/MemeContext"
-import {SavedContext} from "../context/SavedContext"
-import { ImagesContext } from "../context/ImagesContext"
+import React, { useContext, useRef } from "react"
 import { nanoid } from "nanoid"
+import { MemeContext } from "../context/MemeContext"
+import { SavedContext } from "../context/SavedContext"
+import { ImagesContext } from "../context/ImagesContext"
+import Meme from "./Meme"
+import downloadHTML from "../tools/downloadHTML"
+import '../css/main-section.css'
 
 export default function MainSection() {
     const {meme, setImg} = useContext(MemeContext)

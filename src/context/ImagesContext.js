@@ -1,5 +1,4 @@
-import React, {useState} from "react"
-// import { nanoid } from "nanoid"
+import React, { useState } from "react"
 
 const ImagesContext = React.createContext()
 
