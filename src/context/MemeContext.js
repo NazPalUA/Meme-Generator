@@ -1,15 +1,12 @@
 import React, {useState, useRef} from "react"
 import { nanoid } from "nanoid"
 import {getPercentage} from "../tools/convertor"
-// import { ImagesContext } from "./ImagesContext"
 
 const MemeContext = React.createContext()
 
 function MemeContextProvider({children}) {
     const memeRef = useRef()
-
-    // const {imagesArr, addToImagesArr} = useContext(ImagesContext)
-
+    const lastActiveLineRef = useRef()
 
     const [meme, setMeme] = useState({
         linesArr: [
@@ -44,7 +41,7 @@ function MemeContextProvider({children}) {
     }
 
     function centerLine() {
-        const lineWidth = document.getElementById(meme.lastActiveLineId).clientWidth
+        const lineWidth = lastActiveLineRef.current.clientWidth
         const memeWidth = memeRef.current.clientWidth
         setMeme(prevMeme => ({
             ...prevMeme,
@@ -152,11 +149,12 @@ function MemeContextProvider({children}) {
             lastActiveLineId: lastActiveLineId
         }))
     }
-    
+
     return (
         <MemeContext.Provider value={{
             meme,
             memeRef,
+            lastActiveLineRef,
             addLine,
             setImg,
             toggleUpperCase,

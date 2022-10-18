@@ -4,8 +4,15 @@ import linesStyle from "../tools/linesStyle"
 import {getPixels, getPercentage} from "../tools/convertor"
 
 export default function Meme() {
-    const {meme, memeRef, removeActive, handleInputChange, setActive, moveLine} = 
-        useContext(MemeContext)
+    const {
+        meme, 
+        memeRef, 
+        removeActive, 
+        handleInputChange, 
+        setActive, 
+        moveLine,
+        lastActiveLineRef
+    } = useContext(MemeContext)
     const [dragStart, setDragStart] = useState({x: 0, y: 0})
 
     const [width, setWidth] = useState(0)
@@ -73,6 +80,8 @@ export default function Meme() {
                 className={`meme__text no-select`}
                 onDoubleClick={() => handleDoubleInputClick(line.lineId)}
                 style={{...style, ...positionStyle}}
+                ref={line.lineId === meme.lastActiveLineId ?
+                        lastActiveLineRef : null}
             >
                 {line.text}
             </div>
