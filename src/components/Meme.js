@@ -11,7 +11,8 @@ export default function Meme() {
         handleInputChange, 
         setActive, 
         moveLine,
-        lastActiveLineRef
+        lastActiveLineRef,
+        addLine
     } = useContext(MemeContext)
 
     const [dragStart, setDragStart] = useState({x: 0, y: 0})
@@ -124,7 +125,7 @@ export default function Meme() {
                 onDragOver={event => {
                     event.preventDefault() 
                 }}
-
+                onDoubleClick={addLine}
                 src={meme.img} 
                 className="meme__image no-select" 
                 alt="meme"/>
