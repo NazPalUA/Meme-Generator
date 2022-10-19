@@ -42,7 +42,7 @@ function ImagesContextProvider({children}) {
     }
 
     function removeFromImagesArr(id) {
-        setImagesArr(prev => prev.filter(img => !(+img.id === +id)))
+        setImagesArr(prev => prev.filter(img => !(`${img.id}` === `${id}`)))
     }
     
     return (
