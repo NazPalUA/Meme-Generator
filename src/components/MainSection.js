@@ -30,7 +30,6 @@ export default function MainSection() {
             const imgUrl = `data:image/png;base64,${base64String}`
             addToImagesArr(imgUrl)
             setImg(imgUrl)
-            console.log(imgUrl)
         }
         reader.readAsDataURL(file)
     }
