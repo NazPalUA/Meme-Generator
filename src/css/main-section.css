@@ -113,3 +113,16 @@ div.meme__text {
   opacity: 0.25;
   cursor: grabbing;
 }
+
+.meme__delete-line {
+  display: none;
+  position: absolute;
+  width: 25px;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.meme__text:hover .meme__delete-line {
+  display: block;
+}

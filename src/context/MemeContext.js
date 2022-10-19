@@ -122,6 +122,15 @@ function MemeContextProvider({children}) {
         }))
     }
 
+    function removeLine(id) {
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            linesArr: prevMeme.linesArr.filter(line => {
+                return line.lineId !== id
+            })
+        }))
+    }
+
     function setImg(url, name) {
         setMeme(prevMeme => ({
             ...prevMeme,
@@ -165,7 +174,8 @@ function MemeContextProvider({children}) {
             removeActive,
             handleInputChange,
             setActive,
-            moveLine
+            moveLine,
+            removeLine
         }}>
             {children}
         </MemeContext.Provider>

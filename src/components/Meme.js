@@ -2,6 +2,7 @@ import React, { useContext, useState, useLayoutEffect, useEffect } from "react"
 import { MemeContext } from "../context/MemeContext"
 import { getPixels, getPercentages } from "../tools/unitsConverter"
 import linesStyle from "../tools/linesStyle"
+import deleteIcon from "../images/delete.png"
 
 export default function Meme() {
     const {
@@ -12,7 +13,8 @@ export default function Meme() {
         setActive, 
         moveLine,
         lastActiveLineRef,
-        addLine
+        addLine,
+        removeLine
     } = useContext(MemeContext)
 
     const [dragStart, setDragStart] = useState({x: 0, y: 0})
@@ -114,6 +116,12 @@ export default function Meme() {
                         lastActiveLineRef : null}
             >
                 {line.text}
+                <img 
+                    className={`meme__delete-line no-select`}
+                    src={deleteIcon} 
+                    alt="delete icon"
+                    onClick={() => removeLine(line.lineId)}
+                />
             </div>
         })
     }
