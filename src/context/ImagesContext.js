@@ -17,9 +17,9 @@ function ImagesContextProvider({children}) {
         async function getMemes() {
             const res = await fetch("https://api.imgflip.com/get_memes")
             const data = await res.json()
-
             const newImgs = data.data.memes
 
+            // marge images from local storage and fetch without duplication
             setImagesArr(prev => {
                 const urls = new Set(prev.map(img => img.url))
                 return [...prev, ...newImgs.filter(img => !urls.has(img.url))]
