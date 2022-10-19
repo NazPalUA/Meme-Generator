@@ -26,16 +26,10 @@ export default function MainSection() {
         const file = e.target.files[0];
         const reader = new FileReader();
         reader.onloadend = () => {
-            const id = nanoid()
-            // convert file to base64 String
             const base64String = reader.result.replace('data:', '').replace(/^.+,/, '')
-            // store file
-            // localStorage.setItem('wallpaper', base64String)
-            // display image
             const imgUrl = `data:image/png;base64,${base64String}`
-            // console.log(imgUrl)
             setImg(imgUrl, "name")
-            addToImagesArr(id, imgUrl)
+            addToImagesArr(nanoid(), imgUrl)
         }
         reader.readAsDataURL(file)
 
