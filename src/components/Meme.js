@@ -1,4 +1,4 @@
-import React, { useContext, useState, useLayoutEffect } from "react"
+import React, { useContext, useState, useLayoutEffect, useEffect } from "react"
 import { MemeContext } from "../context/MemeContext"
 import { getPixels, getPercentages } from "../tools/unitsConverter"
 import linesStyle from "../tools/linesStyle"
@@ -13,14 +13,22 @@ export default function Meme() {
         moveLine,
         lastActiveLineRef
     } = useContext(MemeContext)
+
     const [dragStart, setDragStart] = useState({x: 0, y: 0})
 
-    const [width, setWidth] = useState(0)
+    const [size, setSize] = useState({width: 0, height: 0})
+
+    function updateSize() {
+        setSize({
+                width: memeRef.current.clientWidth, 
+                height: memeRef.current.clientHeight
+        })
+    }
+    
+    // update size on first load
+    useEffect(updateSize, [memeRef.current])
 
     useLayoutEffect(() => {
-        function updateSize() {
-            setWidth(memeRef.current.clientWidth)
-        }
         window.addEventListener('resize', updateSize)
         updateSize()
         return () => window.removeEventListener('resize', updateSize)
@@ -44,15 +52,15 @@ export default function Meme() {
         event.target.classList.remove("dragging")
         const deltaX = event.clientX - dragStart.x
         const deltaY = event.clientY - dragStart.y
-        moveLine(event.target.id, getPercentages(deltaX, width), getPercentages(deltaY, width))
+        moveLine(event.target.id, getPercentages(deltaX, size.width), getPercentages(deltaY, size.width))
     }
 
     function linesArr() {
-        const style = linesStyle(meme, width)
+        const style = linesStyle(meme, size.width)
         return meme.linesArr.map(line => {
             const positionStyle = {
-                top: getPixels(line.top, width)+"px",
-                left: getPixels(line.left, width)+"px",
+                top: getPixels(line.top, size.width)+"px",
+                left: getPixels(line.left, size.width)+"px",
             }
             return line.active ?
             <input autoFocus
