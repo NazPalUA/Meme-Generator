@@ -12,10 +12,13 @@ export default function MainSection() {
     const {imagesArr, addToImagesArr} = useContext(ImagesContext)
     const {addToSaved} = useContext(SavedContext)
     
-    function getMemeImage() {
-        const randomNumber = Math.floor(Math.random() * imagesArr.length)
-        const url = imagesArr[randomNumber].url
-        const name = imagesArr[randomNumber].name
+    function getNextImage() {
+        const currentIndex = imagesArr.findIndex(img => {
+            return img.url === meme.img
+        })
+        const nextIndex = currentIndex === imagesArr.length-1 ? 0 : currentIndex+1
+        const url = imagesArr[nextIndex].url
+        const name = imagesArr[nextIndex].name
         setImg(url, name)
     }
 
@@ -58,9 +61,9 @@ export default function MainSection() {
 
             <button 
                 className="meme__button meme__button_2"
-                onClick={getMemeImage}
+                onClick={getNextImage}
             >
-                Get a new meme image 🖼
+                Next image
             </button>
 
             <form className="meme__url-form">
