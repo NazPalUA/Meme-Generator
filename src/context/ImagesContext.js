@@ -40,11 +40,16 @@ function ImagesContextProvider({children}) {
             })
         }
     }
+
+    function removeFromImagesArr(id) {
+        setImagesArr(prev => prev.filter(img => !(+img.id === +id)))
+    }
     
     return (
         <ImagesContext.Provider value={{
             imagesArr,
             addToImagesArr,
+            removeFromImagesArr
         }}>
             {children}
         </ImagesContext.Provider>

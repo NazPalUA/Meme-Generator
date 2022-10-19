@@ -15,6 +15,22 @@
 .meme-list__item {
     /* border: 2px solid red; */
     margin-bottom: 10px;
-    width: 100%;
+    position: relative;
+}
+
+.meme-list__img {
     cursor: pointer;
+    width: 100%;
+}
+
+.meme-list__delete-img {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+}
+
+.meme-list__item:hover .meme-list__delete-img {
+    display: block;
 }
