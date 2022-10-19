@@ -131,7 +131,7 @@ function MemeContextProvider({children}) {
         }))
     }
 
-    function setImg(url, name) {
+    function setImg(url, name="") {
         setMeme(prevMeme => ({
             ...prevMeme,
             img: url,

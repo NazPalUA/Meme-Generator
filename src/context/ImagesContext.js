@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { nanoid } from "nanoid"
 
 const ImagesContext = React.createContext()
 
@@ -14,13 +15,16 @@ function ImagesContextProvider({children}) {
         getMemes()
     }, []) 
 
-    function addToImagesArr(id , url) {
-        setImagesArr(prev => {
-            return [
-                {id, url},
-                ...prev
-            ]
-        })
+    function addToImagesArr(url) {
+        const hasImg = imagesArr.some( img => img.url === url )
+        if(!hasImg) {
+            setImagesArr(prev => {
+                return [
+                    {id: nanoid(), url},
+                    ...prev
+                ]
+            })
+        }
     }
     
     return (

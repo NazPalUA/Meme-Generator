@@ -28,11 +28,11 @@ export default function MainSection() {
         reader.onloadend = () => {
             const base64String = reader.result.replace('data:', '').replace(/^.+,/, '')
             const imgUrl = `data:image/png;base64,${base64String}`
-            setImg(imgUrl, "name")
-            addToImagesArr(nanoid(), imgUrl)
+            addToImagesArr(imgUrl)
+            setImg(imgUrl)
+            console.log(imgUrl)
         }
         reader.readAsDataURL(file)
-
     }
 
     const inputRef = useRef(null)
