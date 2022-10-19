@@ -1,5 +1,4 @@
 import React, { useContext, useRef } from "react"
-import { nanoid } from "nanoid"
 import { MemeContext } from "../context/MemeContext"
 import { SavedContext } from "../context/SavedContext"
 import { ImagesContext } from "../context/ImagesContext"
@@ -70,8 +69,8 @@ export default function MainSection() {
                     className="meme__button meme__button_url"
                     onClick={(e) => {
                         e.preventDefault()
-                        setImg(inputRef.current.value, "name")
-                        addToImagesArr(nanoid(), inputRef.current.value)
+                        setImg(inputRef.current.value)
+                        addToImagesArr(inputRef.current.value)
                     }}
                 >
                     Get Image
