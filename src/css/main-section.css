@@ -126,3 +126,7 @@ div.meme__text {
 .meme__text:hover .meme__delete-line {
   display: block;
 }
+
+.meme__text.dragging .meme__delete-line {
+  display: none;
+}
