@@ -71,6 +71,7 @@ export default function MainSection() {
                         e.preventDefault()
                         setImg(inputRef.current.value)
                         addToImagesArr(inputRef.current.value)
+                        inputRef.current.value=""
                     }}
                 >
                     Get Image
