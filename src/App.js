@@ -6,12 +6,12 @@ import SavedMemes from "./pages/SavedMemes"
 
 export default function App() {
     return (
-        <div>
+        <>
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/saved" element={<SavedMemes />} />
             </Routes>
-        </div>
+        </>
     )
 }
