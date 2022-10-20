@@ -23,22 +23,29 @@ main {
 }
 
 :root {
-  --main-gradient: linear-gradient(90deg, #141824 1.18%, #46516e 100%);
-
-  --ff-primary: 'Inter', sans-serif;
+  --ff-primary: 'Roboto', sans-serif;;
   
   --fw-reg: 400;
-  --fw-medium: 600;
-  --fw-bold: 700;
+  --fw-bold: 600;
   
   --clr-light: #fff;
   --clr-semi-light: #DEEBF8;
-  --clr-dark: #21222A;
-  --clr-semi-dark: #282D35;
-  --clr-accent: #61DAFB;
+  --clr-dark: #000000;
+  --clr-semi-dark: #958db6;
+  --clr-accent: #51da5a;
   
+  --main-gradient: linear-gradient(90deg, #141824 1.18%, #46516e 100%);
+
   --fs-h1: 2.44rem;
   --fs-h2: 1.39rem;
   --fs-h3: 1rem;
   --fs-body: 1rem;
+
+  --bp-large: 1200px;
+  --bp-laptops: 1025px;
+  --bp-tablets: 768px;
+  --bp-mobile : 480px;
+
+  --min-width: 320px;
+  --max-width: 1920px;
 }
