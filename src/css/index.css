@@ -22,6 +22,12 @@ main {
   user-select: none;
 }
 
+.container {
+  min-width: var(--min-width);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
 :root {
   --ff-primary: 'Roboto', sans-serif;;
   

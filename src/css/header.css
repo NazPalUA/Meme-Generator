@@ -1,19 +1,19 @@
-a {
-  text-decoration: none;
-  color: inherit;
-}
+a {text-decoration: none;}
 
 .header {
+  background: var(--main-gradient);
+  color: white;
+}
+
+.header__container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 65px;
-  background: var(--main-gradient);
-  color: white;
   padding: 25px 20px 20px;
 }
 
-.header__logo-link {
+.header__main-link {
   display: flex;
   align-items: center;
   height: 100%;
@@ -29,7 +29,7 @@ a {
   font-size: 1.25rem;
   margin: 0;
   display: inline-block;
-  color: #51da5a;
+  color: var(--clr-accent);
 }
 
 .header__saved-link {
@@ -40,7 +40,7 @@ a {
   position: absolute;
   top: 1px;
   left: 12px;
-  color: black;
+  color: var(--clr-dark);
   font-size: 25px;
   font-weight: bold;
 }
