@@ -2,7 +2,6 @@ a {text-decoration: none;}
 
 .header {
   background: var(--main-gradient);
-  color: white;
 }
 
 .header__container {
