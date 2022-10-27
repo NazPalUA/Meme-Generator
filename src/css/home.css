@@ -1,5 +1,29 @@
 .home-page {
-    display: flex;
-    align-items: stretch;
-    justify-content: space-between;
+    padding: 0;
+    max-width: unset;
+    background-color: rgb(149, 141, 182);
+
+}
+
+.main__container {
+    display: grid;
+    grid-template: auto / 25% 50% 25%;
+}
+
+.section {
+
+}
+
+.section_images-sidebar {
+    height: calc(100vh - 67px);
+    
+    padding: 1rem 1.25rem 1rem 0;
+}
+
+.section_main {
+
+}
+
+.section_settings-sidebar {
+
 }

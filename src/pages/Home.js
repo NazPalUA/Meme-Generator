@@ -6,10 +6,18 @@ import "../css/home.css"
 
 export default function Home() {
     return (
-        <div className="home-page">
-            <ImagesSidebar />
-            <MainSection />
-            <SettingsSidebar />
-        </div>
+        <main className="home-page">
+            <div className="container main__container">
+                <section className="section section_images-sidebar">
+                    <ImagesSidebar />
+                </section>
+                <section className="section section_main">
+                    <MainSection />
+                </section>
+                <section className="section section_settings-sidebar">
+                    <SettingsSidebar />
+                </section>
+            </div>
+        </main>
     )
 }
