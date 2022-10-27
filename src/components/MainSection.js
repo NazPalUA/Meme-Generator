@@ -36,7 +36,7 @@ export default function MainSection() {
     const inputRef = useRef(null)
 
     return (
-        <div className="meme-container">
+        <div className="meme-container" id="meme-container">
             <input 
                 type='file' 
                 id="uploadBannerImage" 

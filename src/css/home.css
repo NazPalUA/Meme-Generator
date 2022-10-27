@@ -15,13 +15,14 @@
 }
 
 .section_images-sidebar {
-    height: calc(100vh - 67px);
+    box-sizing: border-box;
+    height: calc(100vh - 100px);
     
     padding: 1rem 1.25rem 1rem 0;
 }
 
 .section_main {
-
+    background-color: white;
 }
 
 .section_settings-sidebar {

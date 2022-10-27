@@ -6,7 +6,7 @@ import bookmark from "../images/bookmark.png"
 
 export default function Header() {
     return (
-        <header className="header">
+        <header className="header" id="header">
             <div className="container header__container">
                 <Link to="/" className="header__main-link">
                     <img 
