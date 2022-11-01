@@ -21,10 +21,33 @@
     padding: 1rem 1.25rem 1rem 0;
 }
 
+
+
 .section_main {
     background-color: white;
 }
 
 .section_settings-sidebar {
 
+}
+
+@media (max-width: 768px) {
+    .section_images-sidebar {
+        box-sizing: border-box;
+        height: 100%;
+        
+        padding: 1rem 1.25rem 1rem 0;
+    }
+
+    .main__container {
+        display: grid;
+        grid-template: auto auto / 70% 30%;
+        grid-template-areas: 
+            "images images"
+            "meme settings";
+    }
+
+    .section_images-sidebar { grid-area: images; }
+    .section_main { grid-area: meme; }
+    .section_settings-sidebar { grid-area: settings; }
 }

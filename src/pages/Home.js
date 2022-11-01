@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
+import HorizontalScroll from 'react-horizontal-scrolling'
 import { MemeContext } from "../context/MemeContext"
 import ImagesSidebar from  "../components/ImagesSidebar"
 import MainSection from "../components/MainSection"
@@ -10,6 +11,8 @@ export default function Home() {
 
     const [imagesSidebarStyle, setImagesSidebarStyle] = useState()
 
+    const tablet = window.innerWidth <= 768
+
     function updateImagesSidebarStyle() {
         const viewportHeight = window.innerHeight
         const headerHeight = document.getElementById("header").offsetHeight
@@ -19,20 +22,27 @@ export default function Home() {
             minHeight: viewportHeight-headerHeight,
             height: mainHeight
         }
-
-        setImagesSidebarStyle(style)
+        if(!tablet) setImagesSidebarStyle(style)
     }
 
     useEffect(()=>{
         updateImagesSidebarStyle()
     }, [meme.img])
 
+
+
     return (
         <main className="home-page">
             <div className="container main__container">
-                <section className="section section_images-sidebar" style={imagesSidebarStyle}>
-                    <ImagesSidebar />
-                </section>
+                {tablet ? 
+                    <HorizontalScroll className="section section_images-sidebar" style={imagesSidebarStyle}>
+                        <ImagesSidebar />
+                    </HorizontalScroll>
+                :
+                    <section className="section section_images-sidebar" style={imagesSidebarStyle}>
+                        <ImagesSidebar />
+                    </section>
+                }
                 <section className="section section_main">
                     <MainSection />
                 </section>
