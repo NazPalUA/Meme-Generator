@@ -33,7 +33,7 @@ export default function Home() {
 
     return (
         <main className="home-page">
-            <div className="container main__container">
+            <div className="container main__container" id="main__container">
                 {tablet ? 
                     <HorizontalScroll className="section section_images-sidebar" style={imagesSidebarStyle}>
                         <ImagesSidebar />
@@ -46,7 +46,7 @@ export default function Home() {
                 <section className="section section_main">
                     <MainSection />
                 </section>
-                <section className="section section_settings-sidebar">
+                <section className="section section_settings-sidebar"  style={imagesSidebarStyle}>
                     <SettingsSidebar />
                 </section>
             </div>

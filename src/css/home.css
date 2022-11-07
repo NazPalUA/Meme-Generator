@@ -51,3 +51,52 @@
     .section_main { grid-area: meme; }
     .section_settings-sidebar { grid-area: settings; }
 }
+
+@media (max-width: 1025px) and (min-width: 769px) {
+    .main__container {
+        grid-template: auto / 35% 65%;
+        transition: all .3s;
+    }
+
+    .main__container.active_settings {
+        grid-template: auto / 65% 35%;
+    }
+
+    .section_settings-sidebar {
+        display: none;
+    }
+
+    .main__container.active_settings .section_settings-sidebar {
+        display: block;
+    }
+
+    .section_images-sidebar {
+        display: block;
+    }
+
+    .main__container.active_settings .section_images-sidebar {
+        display: none;
+    }
+  }
+
+@media (max-width: 768px) {
+    .main__container {
+        position: relative;
+        display: block;
+        height: 100%;
+    }
+
+    .section_settings-sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        background-color: wheat;
+        /* transform: translateX(100%); */
+        transition: transform .5s;
+    }
+
+    .main__container.active_settings .section_settings-sidebar {
+        transform: translateX(-100%);
+    }
+}

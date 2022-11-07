@@ -49,13 +49,18 @@
         grid-template-columns: 1fr 1fr;
         gap: 6px;
     }
+    .meme-list__img {
+        height: 10vw;
+    }
 
   }
 
   @media (max-width: 1025px) {
-    .meme-list {
+    /* .meme-list {
         grid-template-columns: 1fr;
-
+    } */
+    .meme-list__img {
+        height: 14vw;
     }
   }
 
