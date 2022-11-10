@@ -11,7 +11,12 @@ export default function Home() {
 
     const [imagesSidebarStyle, setImagesSidebarStyle] = useState()
 
-    const tablet = window.innerWidth <= 768
+    const [tablet, setTablet] = useState(window.innerWidth <= 768)
+
+    useEffect(()=>{
+        console.log("first")
+        setTablet(window.innerWidth <= 768)
+    }, [window.innerWidth])
 
     function updateImagesSidebarStyle() {
         const viewportHeight = window.innerHeight
@@ -28,8 +33,6 @@ export default function Home() {
     useEffect(()=>{
         updateImagesSidebarStyle()
     }, [meme.img])
-
-
 
     return (
         <main className="home-page">

@@ -17,7 +17,6 @@ export default function SettingsSidebar() {
 
     const fontsData = {
         fontWeight: [            
-            // {name: "Regular", value: 400}, 
             {name: "Medium", value: 500}, 
             {name: "Bold", value: 700}
         ],
