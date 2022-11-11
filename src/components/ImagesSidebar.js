@@ -17,6 +17,7 @@ export default function ImagesSidebar() {
                     className="meme-list__img"
                     src={meme.url}
                     alt={meme.name && "meme image"}
+                    id={meme.id}
                     onClick={e => setImg(e.target.src, meme.name)}
                 />
 

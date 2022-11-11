@@ -19,6 +19,11 @@ export default function MainSection() {
         const url = imagesArr[nextIndex].url
         const name = imagesArr[nextIndex].name
         setImg(url, name)
+        // const scrollIntoViewOptions = {
+        //     behavior: "smooth",
+        //     block: "start",
+        // }
+        // document.getElementById(imagesArr[nextIndex].id).scrollIntoView(scrollIntoViewOptions)
     }
 
     function uploadImage(e) {
