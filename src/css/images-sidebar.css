@@ -10,11 +10,17 @@
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 10px;
-    /* flex-direction: column;
-    align-items: stretch; */
+    position: absolute; 
+    margin: auto;
+    padding: 1rem 1.25rem 1rem 0;
+    max-height: calc(max(100%, calc(100vh - var(--header-height))) - 3rem);
     overflow: scroll;
-    height: 100%;
-    width: 100%;
+    width: 22vw;
+    box-sizing: content-box;
+    background-color: rgb(149, 141, 182);
+    left: 0;
+    right: 0;
+    top: 0;
 }
 
 .meme-list::-webkit-scrollbar {display:none;}
@@ -38,6 +44,7 @@
     top: 0;
     right: 0;
     width: 30px;
+    
 }
 
 .meme-list__item:hover .meme-list__delete-img {
@@ -67,6 +74,11 @@
   @media (max-width: 768px) {
     .meme-list {
         display: flex;
+        max-height: unset;
+        padding: unset;
+        position: static;
+        width: 100%;
+        /* height: 200px; */
     }
 
     .meme-list__item {
