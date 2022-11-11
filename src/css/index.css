@@ -32,6 +32,8 @@ main {
 }
 
 :root {
+  --header-height: 4rem;
+
   --ff-primary: 'Roboto', sans-serif;;
   
   --fw-reg: 400;

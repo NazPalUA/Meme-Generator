@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
+import useWindowSize from "../tools/useWindowSize"
 import HorizontalScroll from 'react-horizontal-scrolling'
 import { MemeContext } from "../context/MemeContext"
 import ImagesSidebar from  "../components/ImagesSidebar"
@@ -8,36 +9,40 @@ import "../css/home.css"
 
 export default function Home() {
     const {meme} = useContext(MemeContext)
+    const size = useWindowSize()
+
+    const [changeSizeTrigger, setChangeSizeTrigger] = useState(1)
+    useEffect(() => {
+        setTimeout(()=>setChangeSizeTrigger(2), 100)
+    }, [])
 
     const [imagesSidebarStyle, setImagesSidebarStyle] = useState()
 
-    const [tablet, setTablet] = useState(window.innerWidth <= 768)
+    const [isThreeColumnLayout, setIsThreeColumnLayout] = useState(size.width >= 768)
 
     useEffect(()=>{
-        console.log("first")
-        setTablet(window.innerWidth <= 768)
-    }, [window.innerWidth])
+        setIsThreeColumnLayout(size.width >= 768)
+    }, [size])
 
-    function updateImagesSidebarStyle() {
-        const viewportHeight = window.innerHeight
+    function getImagesSidebarStyle() {
+        const viewportHeight = size.height ? size.height : window.innerHeight
         const headerHeight = document.getElementById("header").offsetHeight
         const mainHeight = document.getElementById("meme-container").offsetHeight
 
-        const style = {
+        if(isThreeColumnLayout) return {
             minHeight: viewportHeight-headerHeight,
             height: mainHeight
         }
-        if(!tablet) setImagesSidebarStyle(style)
     }
 
     useEffect(()=>{
-        updateImagesSidebarStyle()
-    }, [meme.img])
+        setImagesSidebarStyle(getImagesSidebarStyle)
+    }, [meme.img, size, changeSizeTrigger])
 
     return (
         <main className="home-page">
             <div className="container main__container" id="main__container">
-                {tablet ? 
+                {!isThreeColumnLayout ? 
                     <HorizontalScroll className="section section_images-sidebar" style={imagesSidebarStyle}>
                         <ImagesSidebar />
                     </HorizontalScroll>
