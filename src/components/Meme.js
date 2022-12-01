@@ -40,7 +40,12 @@ export default function Meme() {
 
     function handleDragStart(event) {
         event.target.classList.add("dragging")
-        setDragStart({x: event.clientX, y: event.clientY})
+        if (event.type === "touchstart") {
+            document.body.style="overflow:hidden"
+            setDragStart({x: event.nativeEvent.touches[0].clientX, 
+                y: event.nativeEvent.touches[0].clientY})
+        } else setDragStart({x: event.clientX, y: event.clientY})
+
     }
 
     function handleDragOver(event) {
@@ -52,6 +57,7 @@ export default function Meme() {
     }
 
     function handleDragEnd(event) {
+        document.body.style=""
         event.target.classList.remove("dragging")
         const memePosition = memeRef.current.getBoundingClientRect()
         const lineStartPosition = event.target.getBoundingClientRect()
@@ -59,7 +65,9 @@ export default function Meme() {
         function deltaX() {
             const maxDeltaX = memePosition.right - lineStartPosition.right
             const minDeltaX = memePosition.left - lineStartPosition.left
-            const dragDeltaX = event.clientX - dragStart.x
+            const dragDeltaX = event.type === "touchend" ? 
+                event.changedTouches[0].clientX - dragStart.x:
+                event.clientX - dragStart.x
 
             if(dragDeltaX > maxDeltaX) return maxDeltaX
             else if(dragDeltaX < minDeltaX) return minDeltaX
@@ -69,7 +77,9 @@ export default function Meme() {
         function deltaY() {
             const maxDeltaY = memePosition.bottom - lineStartPosition.bottom
             const minDeltaY = memePosition.top - lineStartPosition.top
-            const dragDeltaY = event.clientY - dragStart.y
+            const dragDeltaY = event.type === "touchend" ? 
+                event.changedTouches[0].clientY - dragStart.y:
+                event.clientY - dragStart.y
             if(dragDeltaY > maxDeltaY) return maxDeltaY
             else if(dragDeltaY < minDeltaY) return minDeltaY
             else return dragDeltaY
@@ -106,6 +116,9 @@ export default function Meme() {
                 onDragStart={handleDragStart}
                 onDragOver={handleDragOver}
                 onDragEnd={handleDragEnd}
+
+                onTouchStart={handleDragStart}
+                onTouchEnd ={handleDragEnd}
 
                 key={line.lineId}
                 id={line.lineId}
