@@ -30,6 +30,7 @@ export default function SettingsSidebar() {
     const fontsFamilyArrHTML = fontsData.fontFamily.map(font => (
         <React.Fragment key={font.name}>
             <input 
+                className="settings__radio"
                 type="radio" 
                 name="fontFamily" 
                 id={font.name}
@@ -37,7 +38,7 @@ export default function SettingsSidebar() {
                 checked={meme.fontFamily === font.value}
                 onChange={handleSettingsChange}
             />
-            <label htmlFor={font.name}>
+            <label htmlFor={font.name} className="settings__item-label no-select">
                 {font.name}
             </label> 
         </React.Fragment>
@@ -46,6 +47,7 @@ export default function SettingsSidebar() {
     const fontsWeightArrHTML = fontsData.fontWeight.map(weight => (
         <React.Fragment key={weight.value}>
             <input
+                className="settings__radio"
                 id={weight.value}
                 type="radio" 
                 name="fontWeight" 
@@ -53,14 +55,16 @@ export default function SettingsSidebar() {
                 checked={`${meme.fontWeight}` === `${weight.value}`}
                 onChange={handleSettingsChange}
             />
-            <label htmlFor={weight.value} className="no-select">{weight.name}</label>
+            <label htmlFor={weight.value} className="settings__item-label no-select">
+                {weight.name}
+            </label>
         </React.Fragment>
     ))
 
     return (
         <div className="settings">
             <button 
-                className="settings__btn settings__add-line-btn"
+                className="settings__item settings__btn settings__add-line-btn"
                 onClick={addLine}
             >
                 Add Line
@@ -68,13 +72,14 @@ export default function SettingsSidebar() {
 
             <div className="settings__item">
                 <input 
+                    className="settings__checkbox"
                     type="checkbox" 
                     id="upper-case"
                     checked={meme.isUpperCase}
                     onChange={toggleUpperCase}
                 />
                 <label 
-                    className="settings__item-text no-select" 
+                    className="settings__item-label no-select" 
                     htmlFor="upper-case"
                 >
                     Upper Case
@@ -82,106 +87,116 @@ export default function SettingsSidebar() {
             </div>
 
             <div className="settings__item">
-                <span className="settings__item-text no-select">
+                <span className="settings__item-title no-select">
                     Text size: 
                 </span> 
-                <button 
-                    className="settings__btn_re-size"
-                    value={"-"}
-                    onClick={(e) => changeTextSize(e.currentTarget)}
-                >
+                <div className="settings__list">
+                    <button 
+                        className="settings__btn_re-size"
+                        value={"-"}
+                        onClick={(e) => changeTextSize(e.currentTarget)}
+                    >
+                        <img
+                            src={resizeLeft}
+                            alt=""
+                        />             
+                    </button>
+                    <span>{meme.fontSize}</span>
+                    <button 
+                        className="settings__btn_re-size"
+                        value={"+"}
+                        onClick={(e) => changeTextSize(e.currentTarget)}
+                    >
                     <img
-                        src={resizeLeft}
+                        src={resizeRight}
                         alt=""
-                    />             
-                </button>
-                <span>{meme.fontSize}</span>
-                <button 
-                    className="settings__btn_re-size"
-                    value={"+"}
-                    onClick={(e) => changeTextSize(e.currentTarget)}
-                >
-                <img
-                    src={resizeRight}
-                    alt=""
-                    />  
-                </button>
+                        />  
+                    </button>
+                </div>
             </div>
 
             <div className="settings__item">
-                <span className="settings__item-text no-select">
+                <span className="settings__item-title no-select">
                     Text color:
                 </span>
-                <button
-                    className="settings__btn-color"
-                    value={"#000000"}
-                    name="color"
-                    onClick={handleSettingsChange}
-                    style={{backgroundColor: "black"}}
-                ></button>
-                <button
-                    className="settings__btn-color"
-                    value={"#ffffff"}
-                    name="color"
-                    onClick={handleSettingsChange}
-                    style={{backgroundColor: "white"}}
-                ></button>
-                <input 
-                    className="settings__btn-color settings__btn-color_input"
-                    type="color"
-                    name="color"
-                    onChange={handleSettingsChange}
-                    value={meme.color}
-                />
+                <div className="settings__list">
+                    <button
+                        className="settings__btn-color"
+                        value={"#000000"}
+                        name="color"
+                        onClick={handleSettingsChange}
+                        style={{backgroundColor: "black"}}
+                    ></button>
+                    <button
+                        className="settings__btn-color"
+                        value={"#ffffff"}
+                        name="color"
+                        onClick={handleSettingsChange}
+                        style={{backgroundColor: "white"}}
+                    ></button>
+                    <input 
+                        className="settings__btn-color settings__btn-color_input"
+                        type="color"
+                        name="color"
+                        onChange={handleSettingsChange}
+                        value={meme.color}
+                    />
+                </div>
             </div>
 
             <div className="settings__item">
-                <span className="settings__item-text no-select">
+                <span className="settings__item-title no-select">
                     Font:
                 </span>
-                {fontsFamilyArrHTML}
+                <div className="settings__list">
+                    {fontsFamilyArrHTML}
+                </div>
             </div>
 
             <div 
                 className="settings__item"
             >
-                <span className="settings__item-text no-select">
+                <span className="settings__item-title no-select">
                     Shadow:
                 </span>
-                <button
-                    className="settings__btn_re-size"
-                    value={"-"}
-                    onClick={(e) => changeShadowSize(e.currentTarget)}
-                >
-                    <img
-                        src={resizeLeft}
-                        alt=""
-                    /> 
-                </button>
-                <input 
-                    className="settings__btn-color"
-                    type="color"
-                    name="textShadowColor"
-                    onChange={handleSettingsChange}
-                    value={meme.textShadowColor}
-                />
-                <button
-                    className="settings__btn_re-size"
-                    value={"+"}
-                    onClick={(e) => changeShadowSize(e.currentTarget)}
-                >
-                    <img
-                        src={resizeRight}
-                        alt=""
-                    /> 
-                </button>
+                <div className="settings__list">
+                    <button
+                        className="settings__btn_re-size"
+                        value={"-"}
+                        onClick={(e) => changeShadowSize(e.currentTarget)}
+                    >
+                        <img
+                            src={resizeLeft}
+                            alt=""
+                        /> 
+                    </button>
+                    <input 
+                        className="settings__btn-color"
+                        type="color"
+                        name="textShadowColor"
+                        onChange={handleSettingsChange}
+                        value={meme.textShadowColor}
+                    />
+                    <button
+                        className="settings__btn_re-size"
+                        value={"+"}
+                        onClick={(e) => changeShadowSize(e.currentTarget)}
+                    >
+                        <img
+                            src={resizeRight}
+                            alt=""
+                        /> 
+                    </button>
+                </div>
             </div>
             <div className="settings__item">
-                <span>Font weight</span>
-                {fontsWeightArrHTML}
+                <span className="settings__item-title no-select">Font weight:</span>
+                <div className="settings__list">
+                    {fontsWeightArrHTML}
+                </div>
             </div>
             <button 
-                className="settings__btn settings__btn_center"
+                className="settings__item settings__btn settings__btn_center"
                 onClick={centerLine}
             >
                 Center Text
