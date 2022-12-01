@@ -13,7 +13,7 @@ export default function Home() {
     const [isThreeColumnLayout, setIsThreeColumnLayout] = useState(size.width >= 768)
 
     useEffect(()=>{
-        setIsThreeColumnLayout(size.width >= 768)
+        setIsThreeColumnLayout(size.width >= 1025)
     }, [size])
 
 

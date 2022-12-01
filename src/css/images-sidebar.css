@@ -69,9 +69,6 @@
     .meme-list__img {
         height: 14vw;
     }
-  }
-
-  @media (max-width: 768px) {
     .meme-list {
         display: flex;
         max-height: unset;
