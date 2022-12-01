@@ -21,7 +21,7 @@ export default function SettingsSidebar() {
             {name: "Bold", value: 700}
         ],
         fontFamily: [
-            {name: "Arial", value: "Arial, Helvetica, sans-serif"}, 
+            // {name: "Arial", value: "Arial, Helvetica, sans-serif"},
             {name: "Calibri", value: "Calibri, Candara, sans-serif"}, 
             {name: "Roboto", value: "Roboto, sans-serif"}
         ]
