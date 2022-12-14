@@ -3,6 +3,7 @@ import { MemeContext } from "../context/MemeContext"
 import { getPixels, getPercentages } from "../tools/unitsConverter"
 import linesStyle from "../tools/linesStyle"
 import deleteIcon from "../images/delete.png"
+import editIcon from "../images/edit-icon.svg"
 
 export default function Meme() {
     const {
@@ -135,6 +136,13 @@ export default function Meme() {
                     alt="delete icon"
                     onClick={() => removeLine(line.lineId)}
                 />
+                <img 
+                    className={`meme__edit-line no-select`}
+                    src={editIcon} 
+                    alt="edit icon"
+                    onClick={() => handleDoubleInputClick(line.lineId)}
+                />
+                
             </div>
         })
     }

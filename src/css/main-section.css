@@ -114,7 +114,7 @@ div.meme__text {
   position: absolute;
   width: 25px;
   top: 0;
-  right: 0;
+  right: -15px;
   cursor: pointer;
 }
 
@@ -123,5 +123,23 @@ div.meme__text {
 }
 
 .meme__text.dragging .meme__delete-line {
+  display: none;
+}
+
+.meme__edit-line {
+  display: none;
+  position: absolute;
+  width: 25px;
+  /* height: 25px; */
+  top: 0;
+  left: -15px;
+  cursor: pointer;
+}
+
+.meme__text:hover .meme__edit-line {
+  display: block;
+}
+
+.meme__text.dragging .meme__edit-line {
   display: none;
 }
