@@ -1,10 +1,22 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
+import { ScrollMenu } from 'react-horizontal-scrolling-menu'
+import useWindowSize from "../tools/useWindowSize"
 import { ImagesContext } from "../context/ImagesContext"
 import { MemeContext } from "../context/MemeContext"
 import "../css/images-sidebar.css"
 import deleteIcon from "../images/delete.png"
 
 export default function ImagesSidebar() {
+
+    const size = useWindowSize()
+
+    const [isThreeColumnLayout, setIsThreeColumnLayout] = useState(size.width >= 1025)
+
+    useEffect(()=>{
+        setIsThreeColumnLayout(size.width >= 1025)
+    }, [size])
+
+
     const {setImg} = useContext(MemeContext)
     const {imagesArr, removeFromImagesArr} = useContext(ImagesContext)
     const memeList = imagesArr.map(meme => {
@@ -31,8 +43,17 @@ export default function ImagesSidebar() {
         )
     })
     return (
-        <div className="meme-list">
-                {memeList}
-        </div>
+        <>
+            {isThreeColumnLayout ? 
+                <div className="meme-list">
+                    {memeList}
+                </div>
+            :
+                <ScrollMenu className="meme-list">
+                        {memeList}
+                </ScrollMenu>
+            }
+        </>
+
     )
 }
