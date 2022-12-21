@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import ImagesSidebar from  "../components/ImagesSidebar"
 import MainSection from "../components/MainSection"
 import SettingsSidebar from "../components/SettingsSidebar"
-import "../css/home.css"
+import "./Home.css"
 
 export default function Home() {
     return (

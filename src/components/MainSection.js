@@ -4,7 +4,7 @@ import { SavedContext } from "../context/SavedContext"
 import { ImagesContext } from "../context/ImagesContext"
 import Meme from "./Meme"
 import downloadHTML from "../tools/downloadHTML"
-import '../css/main-section.css'
+import './MainSection.css'
 
 export default function MainSection() {
     const {meme, setImg} = useContext(MemeContext)

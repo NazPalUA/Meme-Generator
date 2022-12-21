@@ -5,7 +5,7 @@ import { MemeContextProvider } from './context/MemeContext'
 import { SavedContextProvider } from './context/SavedContext'
 import { ImagesContextProvider } from './context/ImagesContext'
 import App from './App'
-import './css/index.css'
+import './index.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
