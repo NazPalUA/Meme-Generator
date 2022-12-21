@@ -1,21 +1,17 @@
 import React, { useContext, useEffect, useState } from "react"
 import { ScrollMenu } from 'react-horizontal-scrolling-menu'
-import useWindowSize from "../tools/useWindowSize"
 import { ImagesContext } from "../context/ImagesContext"
 import { MemeContext } from "../context/MemeContext"
+import useWindowSize from "../tools/useWindowSize"
 import "../css/images-sidebar.css"
 import deleteIcon from "../images/delete.png"
 
 export default function ImagesSidebar() {
-
-    const size = useWindowSize()
-
-    const [isThreeColumnLayout, setIsThreeColumnLayout] = useState(size.width >= 1025)
-
+    const windowSize = useWindowSize()
+    const [isThreeColumnLayout, setIsThreeColumnLayout] = useState(windowSize.width >= 1025)
     useEffect(()=>{
-        setIsThreeColumnLayout(size.width >= 1025)
-    }, [size])
-
+        setIsThreeColumnLayout(windowSize.width >= 1025)
+    }, [windowSize])
 
     const {setImg} = useContext(MemeContext)
     const {imagesArr, removeFromImagesArr} = useContext(ImagesContext)
@@ -32,7 +28,6 @@ export default function ImagesSidebar() {
                     id={meme.id}
                     onClick={e => setImg(e.target.src, meme.name)}
                 />
-
                 <img 
                     className={`meme-list__delete-img no-select`}
                     src={deleteIcon} 
@@ -54,6 +49,5 @@ export default function ImagesSidebar() {
                 </ScrollMenu>
             }
         </>
-
     )
 }
