@@ -1,0 +1,148 @@
+@use '../variables' as v;
+
+.meme-container {
+  display: grid;
+  grid-template: 40px 30px min-content 40px / 1fr 1fr;
+  grid-template-areas: 
+    "button1 button2"
+    "input input"
+    "meme meme"
+    "button3 button4";
+  gap: 17px;
+
+  padding: 1rem;
+}
+
+.meme {
+  grid-area: meme;
+  position: relative;
+
+  &__button_1 { grid-area: button1; }
+  
+  &__button_2 { grid-area: button2; }
+  
+  &__url-form {grid-area: input; }
+  
+  &__button_3 { grid-area: button3; }
+  
+  &__button_4 { grid-area: button4; }
+  
+  &__button {
+    font-family: "Karla", sans-serif;
+    border-radius: 5px;
+    background: v.$main-gradient;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    padding: 10px;
+  }
+  
+  &__url-form {
+    display: flex;
+    outline: 1px solid black;
+    border-radius: 5px;
+  }
+  
+  &__url-input {
+    flex: 4 1 auto;
+    border: none;
+    padding: 1px 5px;
+  }
+  
+  &__button_url {
+    flex: 1 1 auto;
+    width: unset;
+    border-radius: 0;
+    padding: 5px 5px;
+  }
+  
+    
+  &__image {
+    width: 100%;
+    border-radius: 3px;
+  }
+  
+  &__text {
+    position: absolute;
+    top: 0;
+    left: 0;
+  
+    font-family: impact, sans-serif;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    line-height: 1;
+  
+    width: au1to;
+  
+    letter-spacing: 1px;
+    text-shadow:
+        2px 2px 0 #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        0 2px 0 #000,
+        2px 0 0 #000,
+        0 -2px 0 #000,
+        -2px 0 0 #000,
+        2px 2px 5px #000;
+  
+    background: none;
+    border: none;
+  }
+  
+  &__text.active {
+    border: 4px solid red;
+  }
+  
+  &__text:focus {
+    outline: none;
+  }
+  
+}
+
+
+div.meme__text {
+  cursor: grab;
+}
+
+.meme__text.dragging {
+  opacity: 0.25;
+  cursor: grabbing;
+}
+
+.meme__delete-line {
+  display: none;
+  position: absolute;
+  width: 25px;
+  top: 0;
+  right: -15px;
+  cursor: pointer;
+}
+
+.meme__text:hover .meme__delete-line {
+  display: block;
+}
+
+.meme__text.dragging .meme__delete-line {
+  display: none;
+}
+
+.meme__edit-line {
+  display: none;
+  position: absolute;
+  width: 25px;
+  /* height: 25px; */
+  top: 0;
+  left: -15px;
+  cursor: pointer;
+}
+
+.meme__text:hover .meme__edit-line {
+  display: block;
+}
+
+.meme__text.dragging .meme__edit-line {
+  display: none;
+}

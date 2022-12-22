@@ -1,0 +1,92 @@
+@use '../variables' as v;
+
+.settings {
+    padding: 1rem;
+    /* min-height: 100%; */
+
+    &__item {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        border: 2px solid black;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px 0;
+        color: white;
+    }
+    
+    &__item-label {
+        cursor: pointer;
+    }
+    
+    &__item-title {
+    
+    }
+    
+    &__list {
+        display: flex;
+        align-items: center;
+    }
+    
+    &__btn {
+        display: block;
+        font-family: "Karla", sans-serif;
+        border-radius: 5px;
+        background: v.$main-gradient;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        padding: 10px;
+        /* margin-top: 15px; */
+    }
+    
+    &__add-line-btn {
+        display: block;
+    
+    }
+    
+    &__btn_text-size {
+        background: none;
+        border: none;
+        padding: none;
+    }
+    
+    &__btn_re-size {
+        height: 35px;
+        width: 35px;
+        background: none;
+        border: none;
+    }
+    
+    &__btn_re-size img {
+        width: 30px;
+    }
+    
+    &__btn-color {
+        cursor: pointer;
+        height: 30px;
+        width: 30px;
+        border: none;
+        outline: none;
+        padding: 0;
+        margin: 0 5px;
+    }
+    
+    &__checkbox {
+        cursor: pointer;
+    }
+    
+    &__radio {
+        cursor: pointer;
+    }
+}
+
+
+@media (max-width: 768px) and (min-width: 480px) {
+    .settings {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 10px;
+    }
+}

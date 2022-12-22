@@ -3,7 +3,7 @@ import { ScrollMenu } from 'react-horizontal-scrolling-menu'
 import { ImagesContext } from "../context/ImagesContext"
 import { MemeContext } from "../context/MemeContext"
 import useWindowSize from "../tools/useWindowSize"
-import "./ImagesSidebar.css"
+import "./ImagesSidebar.scss"
 import deleteIcon from "../images/delete.png"
 
 export default function ImagesSidebar() {

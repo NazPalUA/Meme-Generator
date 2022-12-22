@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import './Header.css'
+import './Header.scss'
 import trollFace from "../images/header-logo.png"
 import bookmark from "../images/bookmark.png"
 

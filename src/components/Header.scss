@@ -1,0 +1,57 @@
+@use '../variables' as v;
+
+a {text-decoration: none;}
+
+.header {
+  background: v.$main-gradient;
+  font-size: var(--fs-h1);
+
+  &__container {
+    display: flex;
+    align-items: center;
+    height: var(--header-height);
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+  }
+
+  &__main-link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-right: auto;
+  }
+  
+  &__logo {
+    margin-right: 0.3em;
+    height: 100%;
+  }
+  
+  &__title {
+    margin: 0;
+    font-size: inherit;
+    color: v.$clr-accent;
+  }
+  
+  &__saved-link {
+    position: relative;
+    height: 100%;
+  }
+  
+  &__saved-num {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+  
+    font-weight: v.$fw-bold;
+    text-transform: uppercase;
+    color: v.$clr-dark;
+  }
+  
+  &__saved-img {
+    height: 100%;
+  }
+  
+}
+
+

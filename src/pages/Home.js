@@ -2,7 +2,7 @@ import React from "react"
 import ImagesSidebar from  "../components/ImagesSidebar"
 import MainSection from "../components/MainSection"
 import SettingsSidebar from "../components/SettingsSidebar"
-import "./Home.css"
+import "./Home.scss"
 
 export default function Home() {
     return (

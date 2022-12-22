@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { MemeContext } from "../context/MemeContext"
-import './SettingsSidebar.css'
+import './SettingsSidebar.scss'
 import resizeLeft from "../images/resize-left.png"
 import resizeRight from "../images/resize-right.png"
 
