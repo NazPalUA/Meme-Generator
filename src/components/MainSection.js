@@ -1,13 +1,13 @@
-import React, { useContext, useRef } from "react"
+import React, { useContext, useRef, useCallback } from "react"
+import { toPng } from 'html-to-image';
 import { MemeContext } from "../context/MemeContext"
 import { SavedContext } from "../context/SavedContext"
 import { ImagesContext } from "../context/ImagesContext"
 import Meme from "./Meme"
-import downloadHTML from "../tools/downloadHTML"
 import './MainSection.css'
 
 export default function MainSection() {
-    const {meme, setImg} = useContext(MemeContext)
+    const {meme, setImg, memeRef} = useContext(MemeContext)
     const {imagesArr, addToImagesArr} = useContext(ImagesContext)
     const {addToSaved} = useContext(SavedContext)
     
@@ -25,6 +25,23 @@ export default function MainSection() {
         // }
         // document.getElementById(imagesArr[nextIndex].id).scrollIntoView(scrollIntoViewOptions)
     }
+
+    const onDownloadClick = useCallback(() => {
+        if (memeRef.current === null) {
+            return
+        }
+        toPng(memeRef.current, { cacheBust: true, })
+            .then((dataUrl) => {
+                const link = document.createElement('a')
+                link.download = 'my-image-name.png'
+                link.href = dataUrl
+                link.click()
+                link.remove()
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }, [memeRef])
 
     function uploadImage(e) {
         const file = e.target.files[0];
@@ -87,7 +104,7 @@ export default function MainSection() {
 
             <button 
                     className="meme__button meme__button_3"
-                    onClick={()=>downloadHTML("meme")}
+                    onClick={onDownloadClick}
                 >
                     Download
             </button>
