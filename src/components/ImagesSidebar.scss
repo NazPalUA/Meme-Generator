@@ -1,98 +1,77 @@
-@use '../variables' as v;
-
-.HorizontalScrollTrack {
-    height: 0;
-    padding: 0 !important;
-}
-.HorizontalScrollTrackInner::after {
-    display: none;
-}
+@use "../variables" as v;
 
 .meme-list {
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 10px;
-    position: absolute; 
+    position: absolute;
     margin: auto;
     padding: 1rem 1.25rem 1rem 0;
     max-height: calc(max(100%, calc(100vh - var(--header-height))) - 3rem);
     overflow: scroll;
     width: 22vw;
     box-sizing: content-box;
-    background-color: rgb(149, 141, 182);
+    background-color: v.$clr-semi-dark;
     left: 0;
     right: 0;
     top: 0;
-    
-    &::-webkit-scrollbar {display:none;}
+
+    @media screen and (max-width: v.$bp-large) {
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+    }
+
+    @media screen and (max-width: v.$bp-laptops) {
+        display: flex;
+        max-height: unset;
+        padding: unset;
+        position: static;
+        width: 100%;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     &__item {
         position: relative;
         width: 100%;
+
+        @media screen and (max-width: v.$bp-laptops) {
+            position: relative;
+            width: unset;
+        }
     }
-    
+
     &__img {
         cursor: pointer;
         width: 100%;
         height: 7vw;
-        max-height: calc(v.$max-width*7/100);
+        max-height: calc(v.$max-width * 7 / 100);
         object-fit: cover;
+
+        @media screen and (max-width: v.$bp-large) {
+            height: 10vw;
+        }
+
+        @media screen and (max-width: v.$bp-laptops) {
+            --width: 10vw;
+            width: var(--width);
+            min-width: 100px;
+            height: calc(max(var(--width), 100px) * 1.2);
+            object-fit: cover;
+        }
     }
-    
+
     &__delete-img {
         display: none;
         position: absolute;
         top: 0;
         right: 0;
         width: 30px;
-        
     }
-    
+
     &__item:hover &__delete-img {
         display: block;
     }
-    
 }
-
-
-
-@media (max-width: 1200px) {
-    .meme-list {
-        grid-template-columns: 1fr 1fr;
-        gap: 6px;
-    }
-    .meme-list__img {
-        height: 10vw;
-    }
-
-  }
-
-  @media (max-width: 1025px) {
-    /* .meme-list {
-        grid-template-columns: 1fr;
-    } */
-    .meme-list__img {
-        height: 14vw;
-    }
-    .meme-list {
-        display: flex;
-        max-height: unset;
-        padding: unset;
-        position: static;
-        width: 100%;
-        /* height: 200px; */
-    }
-
-    .meme-list__item {
-        position: relative;
-        width: unset;
-    }
-
-    .meme-list__img {
-        --width: 10vw;
-        width: var(--width);
-        height: calc(var(--width)*1.2);
-        max-height: calc(v.$max-width*7/100);
-        object-fit: cover;
-    }
-  }
