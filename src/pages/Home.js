@@ -7,7 +7,7 @@ import "./Home.scss"
 export default function Home() {
     return (
         <main className="home-page">
-            <div className="container home-page__container" id="main__container">
+            <div className="container home-page__container">
                 <section className="home-page__section home-page__section_images-sidebar">
                     <ImagesSidebar />
                 </section>
