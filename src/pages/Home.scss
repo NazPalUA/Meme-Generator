@@ -29,6 +29,7 @@
 
     &__section {
         min-height: calc(100vh - var(--header-height));
+        padding: 0 1rem;
 
         @media screen and (max-width: v.$bp-laptops) {
             min-height: unset;
@@ -45,7 +46,7 @@
             box-sizing: border-box;
             height: 100%;
 
-            padding: 1rem 1.25rem 1rem 0;
+            padding: 0.5rem 1rem;
             grid-area: images;
         }
     }

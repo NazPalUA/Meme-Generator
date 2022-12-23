@@ -21,14 +21,6 @@
         gap: 6px;
     }
 
-    @media screen and (max-width: v.$bp-laptops) {
-        display: flex;
-        max-height: unset;
-        padding: unset;
-        position: static;
-        width: 100%;
-    }
-
     &::-webkit-scrollbar {
         display: none;
     }
