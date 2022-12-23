@@ -1,3 +1,6 @@
+// scss variables are used for non changeable values
+// css variables are used for values that change depending on screen size
+
 $ff-primary: 'Roboto', sans-serif;
 
 $fw-reg: 400;
@@ -29,32 +32,32 @@ $min-width: 320px;
 }
 
 
-@media (max-width: $max-width) {
+@media screen and (max-width: $max-width) {
     :root {}
 }
 
-@media (max-width: $bp-large) {
+@media screen and (max-width: $bp-large) {
     :root {
         --fs-h1: 1.4rem;
     }
 }
 
-@media (max-width: $bp-laptops) {
+@media screen and (max-width: $bp-laptops) {
     :root {}
 }
 
-@media (max-width: $bp-tablets) {
+@media screen and (max-width: $bp-tablets) {
     :root {
         --fs-h1: 1.3rem;
     }
 }
 
-@media (max-width: $bp-mobile) {
+@media screen and (max-width: $bp-mobile) {
     :root {
         --fs-h1: 1.2rem;
     }
 }
 
-@media (max-width: $min-width) {
+@media screen and (max-width: $min-width) {
     :root {}
 }
