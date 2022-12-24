@@ -94,8 +94,22 @@ function MemeContextProvider({children}) {
         }))
     }
 
+    function leftLine(activeLineId) {
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            lastActiveLineId: activeLineId,
+            linesArr: prevMeme.linesArr.map(line => {
+                if(activeLineId !== line.lineId) return line
+                else return {...line, 
+                    left: 0
+                }
+            })
+        }))
+    }
+
     function handleInputChange(event) {
         const {id, value} = event.target
+        leftLine(id)
         setMeme(prevMeme => ({
             ...prevMeme,
             linesArr: prevMeme.linesArr.map(line => {
@@ -175,7 +189,7 @@ function MemeContextProvider({children}) {
             handleInputChange,
             setActive,
             moveLine,
-            removeLine
+            removeLine,
         }}>
             {children}
         </MemeContext.Provider>

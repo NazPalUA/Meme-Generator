@@ -4,6 +4,7 @@ import { getPixels, getPercentages } from "../tools/unitsConverter"
 import linesStyle from "../tools/linesStyle"
 import deleteIcon from "../images/delete.png"
 import editIcon from "../images/edit-icon.svg"
+import './Meme.scss'
 
 export default function Meme() {
     const {
@@ -15,7 +16,7 @@ export default function Meme() {
         moveLine,
         lastActiveLineRef,
         addLine,
-        removeLine
+        removeLine,
     } = useContext(MemeContext)
 
     const [dragStart, setDragStart] = useState({x: 0, y: 0})
@@ -55,6 +56,7 @@ export default function Meme() {
 
     function handleDoubleInputClick(lineId) {
         setActive(lineId)
+        // leftLine(lineId)
     }
 
     function handleDragEnd(event) {

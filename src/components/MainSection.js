@@ -19,11 +19,6 @@ export default function MainSection() {
         const url = imagesArr[nextIndex].url
         const name = imagesArr[nextIndex].name
         setImg(url, name)
-        // const scrollIntoViewOptions = {
-        //     behavior: "smooth",
-        //     block: "start",
-        // }
-        // document.getElementById(imagesArr[nextIndex].id).scrollIntoView(scrollIntoViewOptions)
     }
 
     const onDownloadClick = useCallback(() => {
@@ -58,7 +53,7 @@ export default function MainSection() {
     const inputRef = useRef(null)
 
     return (
-        <div className="meme-container" id="meme-container">
+        <div className="main-sec">
             <input 
                 type='file' 
                 id="uploadBannerImage" 
@@ -67,28 +62,28 @@ export default function MainSection() {
                 style={{display: "none"}} 
             />
             <button 
-                className="meme__button meme__button_1"
+                className="main-sec__btn main-sec__btn_1"
                 onClick={()=>document.getElementById("uploadBannerImage").click()}
             >
                 Upload
             </button>
 
             <button 
-                className="meme__button meme__button_2"
+                className="main-sec__btn main-sec__btn_2"
                 onClick={getNextImage}
             >
                 Next image
             </button>
 
-            <form className="meme__url-form">
+            <form className="main-sec__url-form">
                 <input 
-                    className="meme__url-input"
+                    className="main-sec__url-input"
                     type="text"
                     placeholder="past image link"
                     ref={inputRef}
                 />
                 <button 
-                    className="meme__button meme__button_url"
+                    className="main-sec__btn main-sec__btn_url"
                     onClick={(e) => {
                         e.preventDefault()
                         setImg(inputRef.current.value)
@@ -103,14 +98,14 @@ export default function MainSection() {
             <Meme />
 
             <button 
-                    className="meme__button meme__button_3"
+                    className="main-sec__btn main-sec__btn_3"
                     onClick={onDownloadClick}
                 >
                     Download
             </button>
 
             <button 
-                className="meme__button meme__button_4"
+                className="main-sec__btn main-sec__btn_4"
                 onClick={() => addToSaved(meme)}
             >
                 Save

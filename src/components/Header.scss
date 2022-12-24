@@ -6,6 +6,11 @@ a {text-decoration: none;}
   background: v.$main-gradient;
   font-size: var(--fs-h1);
 
+  @media screen and (max-width: v.$bp-tablets) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
   &__container {
     display: flex;
     align-items: center;

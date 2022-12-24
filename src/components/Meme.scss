@@ -1,0 +1,92 @@
+@use "../variables" as v;
+
+.meme {
+    grid-area: meme;
+    position: relative;
+
+    &__image {
+        width: 100%;
+        border-radius: 3px;
+    }
+
+    &__text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        line-height: 1;
+        padding: 0;
+
+        font-family: impact, sans-serif;
+        font-size: 2em;
+        color: white;
+        text-align: center;
+        line-height: 1;
+
+        width: au1to;
+
+        letter-spacing: normal;
+        word-spacing: normal;
+        text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000,
+            0 -2px 0 #000, -2px 0 0 #000, 2px 2px 5px #000;
+
+        background: none;
+        border: none;
+
+        white-space: nowrap;
+    }
+
+    &__text.active {
+        border: 4px solid v.$clr-dark;
+        border-radius: 10px;
+        width: 100%;
+        left: 0 !important;
+    }
+
+    &__text:focus {
+        outline: none;
+    }
+}
+
+div.meme__text {
+    cursor: grab;
+}
+
+.meme__text.dragging {
+    opacity: 0.25;
+    cursor: grabbing;
+}
+
+.meme__delete-line {
+    display: none;
+    position: absolute;
+    width: 25px;
+    top: 0;
+    right: -15px;
+    cursor: pointer;
+}
+
+.meme__text:hover .meme__delete-line {
+    display: block;
+}
+
+.meme__text.dragging .meme__delete-line {
+    display: none;
+}
+
+.meme__edit-line {
+    display: none;
+    position: absolute;
+    width: 25px;
+    /* height: 25px; */
+    top: 0;
+    left: -15px;
+    cursor: pointer;
+}
+
+.meme__text:hover .meme__edit-line {
+    display: block;
+}
+
+.meme__text.dragging .meme__edit-line {
+    display: none;
+}

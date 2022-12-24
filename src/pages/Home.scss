@@ -19,11 +19,11 @@
             grid-template-areas:
                 "images images"
                 "meme settings";
-        }
-
-        @media screen and (max-width: v.$bp-tablets) {
-            display: flex;
-            flex-direction: column;
+            }
+            
+            @media screen and (max-width: v.$bp-tablets) {
+                display: flex;
+                flex-direction: column;
         }
     }
 
@@ -46,8 +46,13 @@
             box-sizing: border-box;
             height: 100%;
 
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0;
             grid-area: images;
+        }
+
+        @media screen and (max-width: v.$bp-tablets) {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
         }
     }
 
@@ -57,11 +62,22 @@
         @media screen and (max-width: v.$bp-laptops) {
             grid-area: meme;
         }
+        
+        @media screen and (max-width: v.$bp-tablets) {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
     }
 
     &__section_settings-sidebar {
+        padding: 0 0 0 1rem;
         @media screen and (max-width: v.$bp-laptops) {
             grid-area: settings;
+        }
+        
+        @media screen and (max-width: v.$bp-tablets) {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
         }
     }
 }
