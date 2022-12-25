@@ -56,7 +56,6 @@ export default function Meme() {
 
     function handleDoubleInputClick(lineId) {
         setActive(lineId)
-        // leftLine(lineId)
     }
 
     function handleDragEnd(event) {

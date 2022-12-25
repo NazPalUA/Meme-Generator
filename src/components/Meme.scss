@@ -3,6 +3,7 @@
 .meme {
     grid-area: meme;
     position: relative;
+    outline: 3px solid v.$clr-dark;
 
     &__image {
         width: 100%;
@@ -45,48 +46,46 @@
     &__text:focus {
         outline: none;
     }
-}
+    &__text.no-select {
+        cursor: grab;
+    }
 
-div.meme__text {
-    cursor: grab;
-}
+    &__text.dragging {
+        opacity: 0.25;
+        cursor: grabbing;
+    }
 
-.meme__text.dragging {
-    opacity: 0.25;
-    cursor: grabbing;
-}
+    &__delete-line {
+        display: none;
+        position: absolute;
+        width: 25px;
+        top: 0;
+        right: -15px;
+        cursor: pointer;
+    }
 
-.meme__delete-line {
-    display: none;
-    position: absolute;
-    width: 25px;
-    top: 0;
-    right: -15px;
-    cursor: pointer;
-}
+    &__text:hover &__delete-line {
+        display: block;
+    }
 
-.meme__text:hover .meme__delete-line {
-    display: block;
-}
+    &__text.dragging &__delete-line {
+        display: none;
+    }
 
-.meme__text.dragging .meme__delete-line {
-    display: none;
-}
+    &__edit-line {
+        display: none;
+        position: absolute;
+        width: 25px;
+        top: 0;
+        left: -15px;
+        cursor: pointer;
+    }
 
-.meme__edit-line {
-    display: none;
-    position: absolute;
-    width: 25px;
-    /* height: 25px; */
-    top: 0;
-    left: -15px;
-    cursor: pointer;
-}
+    &__text:hover &__edit-line {
+        display: block;
+    }
 
-.meme__text:hover .meme__edit-line {
-    display: block;
-}
-
-.meme__text.dragging .meme__edit-line {
-    display: none;
+    &__text.dragging &__edit-line {
+        display: none;
+    }
 }
