@@ -30,7 +30,7 @@ export default function SettingsSidebar() {
     const fontsFamilyArrHTML = fontsData.fontFamily.map(font => (
         <React.Fragment key={font.name}>
             <input 
-                className="settings__radio"
+                className="settings__radio settings__font-radio"
                 type="radio" 
                 name="fontFamily" 
                 id={font.name}
@@ -38,7 +38,7 @@ export default function SettingsSidebar() {
                 checked={meme.fontFamily === font.value}
                 onChange={handleSettingsChange}
             />
-            <label htmlFor={font.name} className="settings__item-label no-select">
+            <label htmlFor={font.name} className="settings__item-label settings__font-label no-select">
                 {font.name}
             </label> 
         </React.Fragment>
@@ -47,7 +47,7 @@ export default function SettingsSidebar() {
     const fontsWeightArrHTML = fontsData.fontWeight.map(weight => (
         <React.Fragment key={weight.value}>
             <input
-                className="settings__radio"
+                className="settings__radio settings__weight-radio"
                 id={weight.value}
                 type="radio" 
                 name="fontWeight" 
@@ -55,7 +55,7 @@ export default function SettingsSidebar() {
                 checked={`${meme.fontWeight}` === `${weight.value}`}
                 onChange={handleSettingsChange}
             />
-            <label htmlFor={weight.value} className="settings__item-label no-select">
+            <label htmlFor={weight.value} className="settings__item-label settings__weight-label no-select">
                 {weight.name}
             </label>
         </React.Fragment>
@@ -72,14 +72,14 @@ export default function SettingsSidebar() {
 
             <div className="settings__item">
                 <input 
-                    className="settings__checkbox"
+                    className="settings__case-checkbox"
                     type="checkbox" 
                     id="upper-case"
                     checked={meme.isUpperCase}
                     onChange={toggleUpperCase}
                 />
                 <label 
-                    className="settings__item-label no-select" 
+                    className="settings__item-label settings__case-label no-select" 
                     htmlFor="upper-case"
                 >
                     Upper Case
@@ -101,7 +101,7 @@ export default function SettingsSidebar() {
                             alt=""
                         />             
                     </button>
-                    <span>{meme.fontSize}</span>
+                    <span className="settings__font-size">{meme.fontSize}</span>
                     <button 
                         className="settings__btn_re-size"
                         value={"+"}
@@ -171,7 +171,7 @@ export default function SettingsSidebar() {
                         /> 
                     </button>
                     <input 
-                        className="settings__btn-color"
+                        className="settings__btn-color settings__btn-color_input"
                         type="color"
                         name="textShadowColor"
                         onChange={handleSettingsChange}

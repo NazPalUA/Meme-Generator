@@ -1,8 +1,14 @@
-@use '../variables' as v;
+@use "../variables" as v;
 
 .settings {
     padding: 1rem 0;
-    /* min-height: 100%; */
+
+    @media screen and (max-width: v.$bp-tablets) and (min-width: v.$bp-mobile) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 10px;
+        row-gap: 10px;
+    }
 
     &__item {
         display: flex;
@@ -13,21 +19,13 @@
         padding: 10px;
         margin: 10px 0;
         color: white;
+
+        @media screen and (max-width: v.$bp-tablets) and (min-width: v.$bp-mobile) {
+            margin: 0;
+            padding: 10px;
+        }
     }
-    
-    &__item-label {
-        cursor: pointer;
-    }
-    
-    &__item-title {
-    
-    }
-    
-    &__list {
-        display: flex;
-        align-items: center;
-    }
-    
+
     &__btn {
         display: block;
         font-family: "Karla", sans-serif;
@@ -38,31 +36,77 @@
         cursor: pointer;
         width: 100%;
         padding: 10px;
-        /* margin-top: 15px; */
+
+        @media screen and (max-width: v.$bp-tablets) and (min-width: v.$bp-mobile) {
+            margin: 0;
+            padding: 0;
+        }
     }
-    
+
     &__add-line-btn {
         display: block;
         margin: 0 0 10px 0;
+
+        @media screen and (max-width: v.$bp-tablets) and (min-width: v.$bp-mobile) {
+            margin: 0;
+            padding: 0;
+        }
     }
-    
-    &__btn_text-size {
-        background: none;
-        border: none;
-        padding: none;
+
+    &__case-checkbox {
+        cursor: pointer;
+        display: none;
+    }
+
+    &__item-label {
+        cursor: pointer;
+    }
+
+    &__case-label {
+        display: flex;
+        align-items: center;
+        font-weight: v.$fw-bold;
+    }
+    &__case-label::before {
+        content: "";
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        margin-right: 5px;
+        
+        background-image: url(../images/checkbox-false.svg);
+        background-position: center center;
+    }
+
+    &__case-checkbox:checked + &__case-label::before {
+        background-image: url(../images/checkbox-true.svg);
+    }
+
+    &__item-title {
+        font-weight: v.$fw-bold;
+    }
+
+    &__list {
+        display: flex;
+        align-items: center;
     }
     
     &__btn_re-size {
-        height: 35px;
-        width: 35px;
         background: none;
         border: none;
+        cursor: pointer;
     }
     
     &__btn_re-size img {
-        width: 30px;
+        height: 35px;
+        width: 35px;
+        object-position: center center;
     }
-    
+
+    &__font-size {
+        font-size: 1.2rem;
+    }
+
     &__btn-color {
         cursor: pointer;
         height: 30px;
@@ -72,21 +116,28 @@
         padding: 0;
         margin: 0 5px;
     }
-    
-    &__checkbox {
-        cursor: pointer;
+
+    &__btn-color_input {
+
     }
-    
+
     &__radio {
         cursor: pointer;
+        display: none;
     }
-}
 
+    &__radio:checked + &__item-label {
+        color: v.$clr-accent;
+        font-weight: v.$fw-bold;
+    }
 
-@media (max-width: 768px) and (min-width: 480px) {
-    .settings {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 10px;
+    &__font-label, &__weight-label {
+        cursor: pointer;
+        padding: 3px;
+        margin-left: 5px;
+    }
+
+    &__btn_center {
+
     }
 }
