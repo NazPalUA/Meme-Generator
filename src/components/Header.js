@@ -14,7 +14,7 @@ export default function Header() {
                         className="header__logo"
                         alt="troll face"
                     />      
-                    <h1 className="header__title">Meme Generator</h1>
+                    <h1 className="header__title">Meme Generator 2099</h1>
                 </Link>
                 <Link to="/saved" className="header__saved-link">
                     <span className="header__saved-num">0</span>
